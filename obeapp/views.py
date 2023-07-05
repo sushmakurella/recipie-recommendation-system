@@ -34,6 +34,9 @@ def admin_dashboard(request):
     return render(request, 'obeapp/admin_hods_dashboard.html')
 def faculty_dashboard(request):
     return render(request, 'obeapp/faculty/faculty_dashboard.html')
+def lessonplans(request):
+    return render(request, 'obeapp/faculty/lessonplans.html')
+
 
 
 def admin_login(request):
