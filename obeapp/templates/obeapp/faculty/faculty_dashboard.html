@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+      a{
+        text-decoration: none;
+      }
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: center;
+        border: none;
+        background: #a29bfe;
+        outline: none;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        transform: translateY(-5px);
+        background: #6c5ce7;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bg-dark text-white p-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <h3>Faculty Dashboard</h3>
+        <div>
+          <a href="#" class="text-white mr-3">My Profile</a>
+          <a href="#" class="text-white">Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container mt-3">
+      <div class="row">
+
+        <div class="col-md-4 mb-4">
+          <a href="planoryx/create_lesson_plan.html">
+            <div class="card">
+              <img
+                src="https://img.freepik.com/free-vector/students-watching-webinar-computer-studying-online_74855-15522.jpg?w=1060&t=st=1688193488~exp=1688194088~hmac=0dae024fe5cc3aff3569fee97f8a26f85a0c84334823ea52b13c94ce04f9d9e0"
+                class="card-img-top"
+                alt="View Lesson Plans"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  <div class="input-group">
+                    <button id="btn" name="submit" class="btn">
+                      Lesson Plans
+                    </button>
+                  </div>
+                </h5>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <a href="attainments.html">
+            <div class="card">
+              <img
+                src="https://img.freepik.com/free-vector/colleagues-discussing-accounting-statistics-report-using-software_74855-4389.jpg?size=626&ext=jpg&ga=GA1.1.1027052697.1664201931&semt=sph"
+                class="card-img-top"
+                alt="Calculate Attainments"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  <div class="input-group">
+                    <button id="btn" name="submit" class="btn">
+                      Calculate Attainments
+                    </button>
+                  </div>
+                </h5>
+              </div>
+            </div>
+          </a>
+        </div> 
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
