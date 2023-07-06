@@ -42,7 +42,12 @@ def textref(request):
     return render(request, 'obeapp/faculty/textref.html')
 def profmatrix(request):
     return render(request, 'obeapp/faculty/profmatrix.html')
-
+def lectureplan(request):
+    return render(request, 'obeapp/faculty/lectureplan.html')
+def copsomatrix(request):
+    return render(request, 'obeapp/faculty/copsomatrix.html')
+def endsurveyquesnr(request):
+    return render(request, 'obeapp/faculty/endsurveyquesnr.html')
 
 
 

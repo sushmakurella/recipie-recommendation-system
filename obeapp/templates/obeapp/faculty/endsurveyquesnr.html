@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course End Survey Questionnaire</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: white;
+    }
+    .container {
+      max-width: 1000px;
+    }
+    .navbar {
+      background-color: #007bff;
+      color: white;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color: white;
+    }
+    table {
+      width: 200%;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+    th:hover {
+      background-color: #f8f9fa;
+      cursor: pointer;
+    }
+    tr:hover {
+      background-color: #f8f9fa;
+    }
+    .animated-pic {
+      position: fixed;
+      top: 50%;
+      right: 30px; /* Adjust the value to move the image towards the right */
+      transform: translate(0, -50%);
+      z-index: 9999;
+     
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">PLANORYX</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-8">
+        <h2 class="text-center">Course End Survey Questionnaire</h2>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>S.NO</th>
+              <th>COs</th>
+              <th>Question</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>CO1</td>
+              <td contenteditable></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>CO2</td>
+              <td contenteditable></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>CO3</td>
+              <td contenteditable></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>CO4</td>
+              <td contenteditable></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>CO5</td>
+              <td contenteditable></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="animated-pic">
+        <img src="https://img.freepik.com/free-vector/virtual-graduation-ceremony-design_23-2148572009.jpg?w=740&t=st=1688230159~exp=1688230759~hmac=2845e5562761c82dc561341270a5b1a45087f005c01b7eff12b15cfc5bf11e9a" alt="Animated Picture" width="250" height="300">
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
