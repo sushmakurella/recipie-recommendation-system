@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planoryx - Book Form</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: white;
+    }
+    .navbar {
+      background-color: blue;
+    }
+    .navbar-brand {
+      color: white;
+    }
+    .navbar-nav .nav-link {
+      color: white;
+    }
+    .container {
+      max-width: 600px;
+    }
+    .form-group {
+      margin-bottom: 30px;
+    }
+    .animated-pic {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translate(0, -50%);
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <span class="navbar-brand mx-auto">PLANORYX</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container mt-4">
+    <h2>Add Books</h2>
+    <form id="book-form">
+      <h4>Text Books</h4>
+      <div id="text-books-container">
+        <div class="form-group">
+          <label for="text-book-title-1">Title:</label>
+          <input type="text" class="form-control" id="text-book-title-1" name="text-book-title[]" required>
+        </div>
+        <div class="form-group">
+          <label for="text-book-author-1">Author:</label>
+          <input type="text" class="form-control" id="text-book-author-1" name="text-book-author[]" required>
+        </div>
+        <div class="form-group">
+          <label for="text-book-edition-1">Edition:</label>
+          <input type="text" class="form-control" id="text-book-edition-1" name="text-book-edition[]" required>
+        </div>
+      </div>
+
+      <h4>Reference Books</h4>
+      <div id="reference-books-container">
+        <div class="form-group">
+          <label for="reference-book-title-1">Title:</label>
+          <input type="text" class="form-control" id="reference-book-title-1" name="reference-book-title[]" required>
+        </div>
+        <div class="form-group">
+          <label for="reference-book-author-1">Author:</label>
+          <input type="text" class="form-control" id="reference-book-author-1" name="reference-book-author[]" required>
+        </div>
+        <div class="form-group">
+          <label for="reference-book-edition-1">Edition:</label>
+          <input type="text" class="form-control" id="reference-book-edition-1" name="reference-book-edition[]" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="button" class="btn btn-primary" id="add-text-book-btn">Add Text Book</button>
+        <button type="button" class="btn btn-primary" id="add-reference-book-btn">Add Reference Book</button>
+      </div>
+      
+      <button type="submit" class="btn btn-success">Save</button>
+    </form>
+  </div>
+  <div class="animated-pic">
+    <img src="https://img.freepik.com/free-vector/virtual-graduation-ceremony-design_23-2148572009.jpg?w=740&t=st=1688230159~exp=1688230759~hmac=2845e5562761c82dc561341270a5b1a45087f005c01b7eff12b15cfc5bf11e9a" alt="Animated Picture" width="250" height="300">
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const addTextBookBtn = document.getElementById("add-text-book-btn");
+      const addReferenceBookBtn = document.getElementById("add-reference-book-btn");
+      const textBooksContainer = document.getElementById("text-books-container");
+      const referenceBooksContainer = document.getElementById("reference-books-container");
+      const form = document.getElementById("book-form");
+      let textBookCount = 1;
+      let referenceBookCount = 1;
+      const maxBooks = 3;
+
+      addTextBookBtn.addEventListener("click", function() {
+        if (textBookCount < maxBooks) {
+          const newBook = `
+            <div class="form-group">
+              <label for="text-book-title-${textBookCount + 1}">Title:</label>
+              <input type="text" class="form-control" id="text-book-title-${textBookCount + 1}" name="text-book-title[]" required>
+            </div>
+            <div class="form-group">
+              <label for="text-book-author-${textBookCount + 1}">Author:</label>
+              <input type="text" class="form-control" id="text-book-author-${textBookCount + 1}" name="text-book-author[]" required>
+            </div>
+            <div class="form-group">
+              <label for="text-book-edition-${textBookCount + 1}">Edition:</label>
+              <input type="text" class="form-control" id="text-book-edition-${textBookCount + 1}" name="text-book-edition[]" required>
+            </div>
+          `;
+          textBooksContainer.insertAdjacentHTML("beforeend", newBook);
+          textBookCount++;
+        } else {
+          addTextBookBtn.disabled = true;
+        }
+      });
+
+      addReferenceBookBtn.addEventListener("click", function() {
+        if (referenceBookCount < maxBooks) {
+          const newBook = `
+            <div class="form-group">
+              <label for="reference-book-title-${referenceBookCount + 1}">Title:</label>
+              <input type="text" class="form-control" id="reference-book-title-${referenceBookCount + 1}" name="reference-book-title[]" required>
+            </div>
+            <div class="form-group">
+              <label for="reference-book-author-${referenceBookCount + 1}">Author:</label>
+              <input type="text" class="form-control" id="reference-book-author-${referenceBookCount + 1}" name="reference-book-author[]" required>
+            </div>
+            <div class="form-group">
+              <label for="reference-book-edition-${referenceBookCount + 1}">Edition:</label>
+              <input type="text" class="form-control" id="reference-book-edition-${referenceBookCount + 1}" name="reference-book-edition[]" required>
+            </div>
+          `;
+          referenceBooksContainer.insertAdjacentHTML("beforeend", newBook);
+          referenceBookCount++;
+        } else {
+          addReferenceBookBtn.disabled = true;
+        }
+      });
+
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+
+        console.log("Text Books:");
+        formData.getAll("text-book-title[]").forEach(function(value, index) {
+          console.log("Title:", value);
+          console.log("Author:", formData.getAll("text-book-author[]")[index]);
+          console.log("Edition:", formData.getAll("text-book-edition[]")[index]);
+          console.log("-----------");
+        });
+
+        console.log("Reference Books:");
+        formData.getAll("reference-book-title[]").forEach(function(value, index) {
+          console.log("Title:", value);
+          console.log("Author:", formData.getAll("reference-book-author[]")[index]);
+          console.log("Edition:", formData.getAll("reference-book-edition[]")[index]);
+          console.log("-----------");
+        });
+
+        // You can save the form data or perform further processing as needed
+
+        // Clear the form fields
+        form.reset();
+      });
+    });
+  </script>
+</body>
+</html>

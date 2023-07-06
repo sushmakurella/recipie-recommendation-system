@@ -13,4 +13,7 @@ urlpatterns = [
     path('faculty_dashboard',views.faculty_dashboard,name='faculty_dashboard'),
     path('Dashboard',views.admin_dashboard,name='Dashboard'),
     path('lessonplans',views.lessonplans,name='lessonplans'),
+    path('courses',views.courses,name='courses'),
+    path('textref',views.textref,name='textref'),
+    path('profmatrix',views.profmatrix,name='profmatrix'),
 ]

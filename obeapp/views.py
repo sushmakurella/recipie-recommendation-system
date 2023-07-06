@@ -36,6 +36,13 @@ def faculty_dashboard(request):
     return render(request, 'obeapp/faculty/faculty_dashboard.html')
 def lessonplans(request):
     return render(request, 'obeapp/faculty/lessonplans.html')
+def courses(request):
+    return render(request, 'obeapp/faculty/courses.html')
+def textref(request):
+    return render(request, 'obeapp/faculty/textref.html')
+def profmatrix(request):
+    return render(request, 'obeapp/faculty/profmatrix.html')
+
 
 
 
