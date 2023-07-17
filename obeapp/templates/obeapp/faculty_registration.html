@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form  method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <!-- {% for field,placeholder in sample %}
+        <input type="{{field.field.widget.input_type}}" name="{{field.html_name}}" placeholder="{{placeholder}}" class="form-control"/>
+        {%  endfor %} -->
+        <div class="mt-3">
+            <input type="submit" >
+
+        </div>
+      </form>
+    
+    
+</body>
+</html>

@@ -7,7 +7,7 @@ urlpatterns = [
     # path('login',views.login_request,name='login'),
     # path('register',views.register_request,name='register'),
     # path('adlogout',views.adlogout,name='adlogout'),
-    path('index',views.index,name='index'),
+    # path('index',views.index,name='index'),
     path('admin_login',views.admin_login,name='admin_login'),
     path('admin_logout',views.admin_logout,name='admin_logout'),
     path('faculty_dashboard',views.faculty_dashboard,name='faculty_dashboard'),
@@ -19,4 +19,8 @@ urlpatterns = [
     path('lectureplan',views.lectureplan,name='lectureplan'),
     path('copsomatrix',views.copsomatrix,name='copsomatrix'),
     path('endsurveyquesnr',views.endsurveyquesnr,name='endsurveyquesnr'),
+    path('faculty_registration',views.faculty_registration,name='faculty_registration'),
+    path('login',views.login_request,name='login'),
+    path('logout',views.logout_request,name='logout'),
+    path('lo',views.editable_table,name='lo'),
 ]
