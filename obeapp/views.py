@@ -26,6 +26,8 @@ def copsomatrix(request):
     return render(request, 'obeapp/faculty/copsomatrix.html')
 def endsurveyquesnr(request):
     return render(request, 'obeapp/faculty/endsurveyquesnr.html')
+def test(request):
+    return render(request, 'obeapp/faculty/test.html')
 
 
 
