@@ -19,4 +19,6 @@ urlpatterns = [
     path('lectureplan',views.lectureplan,name='lectureplan'),
     path('copsomatrix',views.copsomatrix,name='copsomatrix'),
     path('endsurveyquesnr',views.endsurveyquesnr,name='endsurveyquesnr'),
+    path('myprofile',views.myprofile,name='myprofile'),
+    path('test',views.test,name='test'),
 ]

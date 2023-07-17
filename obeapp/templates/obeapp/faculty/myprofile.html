@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .navbar {
+      background-color: #343a40;
+      color: white;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: white;
+    }
+
+    .navbar-toggler-icon {
+      background-color: white;
+    }
+
+    .container {
+      max-width: 800px;
+    }
+
+    .profile-card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 40px;
+      margin-top: 40px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .profile-name {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+      text-transform: uppercase;
+    }
+
+    .profile-info {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    .profile-button {
+      display: inline-block;
+      padding: 10px 30px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .profile-button:hover {
+      background-color: #0056b3;
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">My Profile</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Switch Mode</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="profile-card">
+          <img src="https://example.com/path/to/profile-image.jpg" alt="Profile Image" class="profile-image">
+          <h2 class="profile-name">John Doe</h2>
+          <p class="profile-info">Email: john.doe@example.com</p>
+          <p class="profile-info">Phone: +1 234 567 8901</p>
+          <p class="profile-info">Location: New York, USA</p>
+          <a href="#" class="profile-button">Edit Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 My Profile. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

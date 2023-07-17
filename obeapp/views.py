@@ -48,7 +48,10 @@ def copsomatrix(request):
     return render(request, 'obeapp/faculty/copsomatrix.html')
 def endsurveyquesnr(request):
     return render(request, 'obeapp/faculty/endsurveyquesnr.html')
-
+def myprofile(request):
+    return render(request, 'obeapp/faculty/myprofile.html')
+def test(request):
+    return render(request, 'obeapp/faculty/test.html')
 
 
 def admin_login(request):
