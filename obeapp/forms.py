@@ -6,7 +6,8 @@ from django.forms import DateInput
 
 # Create your forms here.
 
-class NewUserForm(forms.ModelForm):
+
+class NewUserForm(UserCreationForm):
 
 	class Meta:
 		model = Userform
@@ -21,4 +22,10 @@ class NewUserForm(forms.ModelForm):
 		user.email = self.cleaned_data['email']
 		if commit:
 			user.save()
-		return user
+
+from .models import Person
+
+class PersonForm(forms.ModelForm):
+    class Meta:
+        model = Person
+        fields = ['name', 'age', 'email']

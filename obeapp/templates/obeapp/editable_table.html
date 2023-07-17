@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editable Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editable Table</h1>
+    <form id="editable-form" method="POST">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        <table id="editable-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in formset %}
+                <tr>
+                    <td>{{ form.name }}</td>
+                    <td>{{ form.age }}</td>
+                    <td>{{ form.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="button" id="add-row-btn">Add Row</button>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addRowBtn = document.getElementById('add-row-btn');
+            const tableBody = document.getElementsByTagName('tbody')[0];
+
+            addRowBtn.addEventListener('click', function() {
+                const newRow = document.createElement('tr');
+                for (let i = 0; i < 3; i++) {
+                    const cell = document.createElement('td');
+                    const input = document.createElement('input');
+                    input.setAttribute('type', 'text');
+                    input.setAttribute('name', 'person-' + (document.getElementsByTagName('tr').length - 1) + '-' + i);
+                    cell.appendChild(input);
+                    newRow.appendChild(cell);
+                }
+                tableBody.appendChild(newRow);
+            });
+        });
+    </script>
+</body>
+</html>
