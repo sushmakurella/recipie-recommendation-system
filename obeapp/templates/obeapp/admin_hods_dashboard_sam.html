@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+      a{
+        text-decoration: none;
+      }
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: center;
+        border: none;
+        background: #a29bfe;
+        outline: none;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        transform: translateY(-5px);
+        background: #6c5ce7;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bg-dark text-white p-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <h3>Admin Dashboard</h3>
+        <div>
+          <a href="#" class="text-white mr-3">My Profile</a>
+          <a href="{% url 'admin_logout' %}" class="text-white">Logout</a>
+          <a href="#" class="text-white">Register</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          
+            <div class="card">
+              <img
+                src="https://img.freepik.com/free-vector/happy-cartoon-college-university-students-holding-diplomas-people-getting-degree-certificate-academic-success-flat-vector-illustration-education-graduation-concept-banner-website-design_74855-24229.jpg?w=900&t=st=1688194100~exp=1688194700~hmac=18e5e224ae8663259591cf13757861797ca2020d167158ee41c3386b603b4585"
+                class="card-img-top"
+                alt="Regulations"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="#"><div class="input-group">
+                    <button id="btn" name="submit" class="btn">
+                      Regulations
+                    </button>
+                  </div></a>
+                </h5>
+              </div>
+            </div>
+          
+        </div>
+
+        <div class="col-md-4 mb-4">
+          
+            <div class="card">
+              <img
+                src="https://img.freepik.com/free-vector/reading-book-illustration_114360-8532.jpg?size=626&ext=jpg&ga=GA1.1.1027052697.1664201931&semt=ais"
+                class="card-img-top"
+                alt="Courses"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="#"> <div class="input-group">
+                    <button id="btn" name="submit" class="btn">Courses</button>
+
+                  </div></a>
+                </h5>
+              </div>
+            </div>
+          
+        </div>
+
+        <div class="col-md-4 mb-4">
+         
+            <div class="card">
+              <img
+                src="https://img.freepik.com/free-vector/webinar-concept-illustration_114360-4764.jpg?w=1060&t=st=1688193239~exp=1688193839~hmac=4a219eb5467cbf0c882427e410a999c24f1d7371cd723c841be443f6a3ae9ea6"
+                class="card-img-top"
+                alt="Manage Faculty"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="#"><div class="input-group">
+                    <button id="btn" name="submit" class="btn">
+                      Manage Faculty
+                    </button>
+                  </div></a>
+                </h5>
+              </div>
+            </div>
+          
+        </div>
+
+        
+        <div class="col-md-4 mb-4">
+          <a href="#">
+            <div class="card">
+              <img
+                src="https://img.freepik.com/free-vector/students-watching-webinar-computer-studying-online_74855-15522.jpg?w=1060&t=st=1688193488~exp=1688194088~hmac=0dae024fe5cc3aff3569fee97f8a26f85a0c84334823ea52b13c94ce04f9d9e0"
+                class="card-img-top"
+                alt="View Lesson Plans"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  <div class="input-group">
+                    <button id="btn" name="submit" class="btn">
+                      View Lesson Plans
+                    </button>
+
+                  </div>
+                </h5>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          
+            <div class="card">
+              <img
+                src="https://img.freepik.com/free-vector/feedback-survey-concept-illustration_114360-17632.jpg?size=626&ext=jpg&ga=GA1.1.1027052697.1664201931&semt=sph"
+                class="card-img-top"
+                alt="End Survey"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="#"><div class="input-group">
+                    <button id="btn" name="submit" class="btn">
+                      End Survey
+                    </button>
+                  </div></a>
+                </h5>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+
+
+  
+</html>

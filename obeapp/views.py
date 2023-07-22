@@ -6,11 +6,13 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/admin_login')
-def admin_dashboard(request):
-    return render(request, 'obeapp/admin_hods_dashboard.html')
+def admin_hods_dashboard_sam(request):
+    return render(request, 'obeapp/admin_hods_dashboard_sam.html')
 
-def faculty_dashboard(request):
-    return render(request, 'obeapp/faculty/faculty_dashboard.html')
+def faculty_dashboard_sam(request):
+    return render(request, 'obeapp/faculty/faculty_dashboard_sam.html')
+def index(request):
+    return render(request, 'obeapp/index.html')
 
 def lessonplans(request):
     return render(request, 'obeapp/faculty/lessonplans.html')
@@ -33,7 +35,7 @@ def test(request):
 
 def admin_login(request):
     if request.user.is_authenticated:
-        return redirect(admin_dashboard)
+        return redirect(admin_hods_dashboard_sam)
     if request.method == "POST":
         uname = request.POST['uname']
         pswd = request.POST['pswd']
@@ -41,7 +43,7 @@ def admin_login(request):
         if user and user.is_superuser:
             login(request, user)
             request.session['user_name'] = uname
-            return redirect(admin_dashboard)
+            return redirect(admin_hods_dashboard_sam)
         else:
             return render(request, 'obeapp/admin_login.html', {'error': True})
     return render(request, 'obeapp/admin_login.html')
