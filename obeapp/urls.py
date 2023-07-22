@@ -21,4 +21,5 @@ urlpatterns = [
     path('endsurveyquesnr',views.endsurveyquesnr,name='endsurveyquesnr'),
     path('test',views.test,name='test'),
     path('admin_dashboard',views.admin_dashboard,name='admin_dasboard'),
+    path('test1',views.test1,name='test1'),
 ]
