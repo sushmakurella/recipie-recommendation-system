@@ -20,4 +20,5 @@ urlpatterns = [
     path('copsomatrix',views.copsomatrix,name='copsomatrix'),
     path('endsurveyquesnr',views.endsurveyquesnr,name='endsurveyquesnr'),
     path('test',views.test,name='test'),
+    path('admin_dashboard',views.admin_dashboard,name='admin_dasboard'),
 ]

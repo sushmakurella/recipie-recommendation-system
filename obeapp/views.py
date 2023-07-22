@@ -8,7 +8,8 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/admin_login')
 def admin_hods_dashboard_sam(request):
     return render(request, 'obeapp/admin_hods_dashboard_sam.html')
-
+def admin_dashboard(request):
+    return render(request, 'obeapp/frontend/admin_dashboard.html')
 def faculty_dashboard_sam(request):
     return render(request, 'obeapp/faculty/faculty_dashboard_sam.html')
 def index(request):
