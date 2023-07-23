@@ -5,13 +5,17 @@ from .forms import NewUserForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='/admin_login')
+# @login_required(login_url='/admin_login')
+def admin_dashboard(request):
+    return render(request, 'obeapp/admin/admin_dashboard.html')
+def Regulations(request):
+    return render(request, 'obeapp/admin/regulations.html')
 def admin_hods_dashboard_sam(request):
     return render(request, 'obeapp/admin_hods_dashboard_sam.html')
 def faculty_dashboard_sam(request):
     return render(request, 'obeapp/faculty/faculty_dashboard_sam.html')
 def index(request):
-    return render(request, 'obeapp/index.html')
+    return render(request, 'obeapp/land.html')
 
 def lessonplans(request):
     return render(request, 'obeapp/faculty/lessonplans.html')
@@ -83,27 +87,27 @@ def logout_request(request):
 
 
 
-from .forms import PersonForm
-from .models import Person
-from django import forms
+# from .forms import PersonForm
+# from .models import Person
+# from django import forms
 
-def editable_table(request):
-    PersonFormSet = forms.formset_factory(PersonForm, extra=1)
+# def editable_table(request):
+#     PersonFormSet = forms.formset_factory(PersonForm, extra=1)
 
-    if request.method == 'POST':
-        formset = PersonFormSet(request.POST, prefix='person')
-        if formset.is_valid():
-            for form in formset:
-                name = form.cleaned_data['name']
-                age = form.cleaned_data['age']
-                email = form.cleaned_data['email']
-                person, created = Person.objects.get_or_create(name=name, age=age, email=email)
-            return redirect('editable_table')  # Redirect to the same page after saving
-    else:
-        formset = PersonFormSet(prefix='person', queryset=Person.objects.none())
+#     if request.method == 'POST':
+#         formset = PersonFormSet(request.POST, prefix='person')
+#         if formset.is_valid():
+#             for form in formset:
+#                 name = form.cleaned_data['name']
+#                 age = form.cleaned_data['age']
+#                 email = form.cleaned_data['email']
+#                 person, created = Person.objects.get_or_create(name=name, age=age, email=email)
+#             return redirect('editable_table')  # Redirect to the same page after saving
+#     else:
+#         formset = PersonFormSet(prefix='person', queryset=Person.objects.none())
 
     
-    return render(request, 'obeapp/editable_table.html', {'formset': formset})
+#     return render(request, 'obeapp/editable_table.html', {'formset': formset})
 
 
 # from django.db import models
