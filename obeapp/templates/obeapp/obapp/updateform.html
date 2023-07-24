@@ -1,0 +1,754 @@
+{% load static %}
+<html>
+    <head>
+        <title>
+            lectureplan
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="http://github.com/aadel112/googoose/jquery.googoose.js"></script>
+       <!-- <style>
+            *{
+                /*font-family: 'Open Sans', sans-serif;*/
+                font-family: serif;
+                margin: 0;
+            }
+            #maindiv{
+                width:80%;
+                border-color: blue;
+                border-style: groove;
+                /*position: relative;*/
+                margin:auto;
+            }
+            #lesson_plan_details{
+                position: relative;
+                margin-top:30px;
+                margin-left: 20px;
+            }
+            
+            .lesson_plan_details_inputdiv{
+                width: 300px;
+                height: 30px;
+                position: relative;
+                bottom: 5px;
+                border-style: groove;
+                border-color: black;
+                border-radius: 5px;
+            }
+            .input_div{
+                margin-right: 30px;
+                padding-right: 100px;
+            }
+            #header{
+                font-family: serif;
+            }
+            .heading1{
+                font-size: 25;
+                position: relative;
+                margin-top:50px;
+                margin-bottom:0;
+                
+            }
+            .heading2{
+                font-size: 15;
+                font-weight: 300;
+            }
+            .heading3{
+                font-size: 20;
+            }
+            hr{
+                background-color: black;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            #hrdownline{
+                position: relative;
+                top:0;
+                background-color: black;
+            }
+            #hrdownline1{
+                position: relative;
+                margin-bottom: 10px;  
+                background-color: black;
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            #head3{
+                position: relative;
+                margin-bottom: 10px;
+                
+            }
+            #head2{
+                position: relative;
+                color: #404258;
+                /*margin-bottom: 10px;*/
+            }
+            #head1{
+                position: relative;
+                margin-bottom:10px;
+            }
+            img{
+                position: relative;
+                margin-top:20px;
+                margin-right: 20px;
+            }
+            .lesson_plan_details_row{
+                display: flex;
+                flex-wrap: wrap;
+                color: black;
+                margin: 10px;
+            }
+            .lesson_plan_details_table{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .batch_h3{
+                font-weight: 700;
+                font-size: 20;
+            }
+            .batch_h3_details{
+                font-weight: 400;
+                font-size: 20;
+            }
+            .lessonplan{
+                position:relative;
+                margin-top: 40px;
+            }
+            .heads{
+                position: relative;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+            #courseoutcomes{
+                position: relative;
+                padding-left:225px;
+            }
+            #courseoutcomes,#textbooks,#referencebooks,#targetproficiency,#lectureplan,#co-psomatrix,#course_end_survey_questionaire,#details_of_course_instructor{
+                position: relative;
+                padding-left:130px; 
+            }
+            #courseoutcomes.table.tbody,#textbooks.table.tbody,#referencebooks.table.tbody,#targetproficiency.table.tbody,#lectureplan.table.tbody,#co-psomatrix.table.tbody,#course_end_survey_questionaire.table.tbody,#details_of_course_instructor.table.tbody{
+                text-align: center; 
+            }
+            thead{
+                font-weight: 600;
+                font-size: 20;
+            }
+            tbody{
+                font-weight: 400;
+                font-size: 20;
+            }
+            table,td,th{
+                border-collapse:collapse ;
+                /*text-align: center;*/
+            }
+            .tb_rb{
+                border-style: none;
+            }
+            .below_heading{
+                font-weight: 400;
+                font-size: 20; 
+                margin-top: 8px;
+                margin-bottom: 8px;
+                
+            }
+            .align_left{
+                text-align: left;
+            }
+            .costable{
+                margin-top: 20px;
+                margin-bottom: 30px;
+            }
+            .signs{
+                padding-top: 30px;
+                padding-bottom: 20px;
+            }
+            .printbut{
+                width: 150px;
+                height: 50px;
+                font-size: 30;
+                font-weight: 400;
+                border-style: none;
+                border-radius: 15px;
+                background: linear-gradient(25deg, #865DFF,#E384FF,#FFA3FD);
+                color: aliceblue;
+                position: relative;
+                margin-left: 1200px;
+                margin-bottom: 100px;
+            }
+            .empty{
+                height: 100px;
+                width: 100%;
+            }
+            .outertable{
+                padding: 0;
+                margin: 0;
+            }
+            .secondhr{
+                margin-bottom: 20px;
+                width: 80%;
+            }
+            .hr123{
+                width:85%;
+            }
+            .footer{
+                width: 100%;
+                height: 10px;
+            }
+
+@media print {
+  
+  .hidden-print{
+  display: none;
+  }
+  .hr123{
+                width:80%;
+            }
+  #courseoutcomes,#textbooks,#referencebooks,#targetproficiency,#lectureplan,#co-psomatrix,#course_end_survey_questionaire,#details_of_course_instructor{
+                position: relative;
+                padding-left:110px; 
+            }
+
+}
+      /*     @page {
+             size: A4;
+             margin: 11mm 17mm 17mm 17mm;
+             }
+
+@media print {
+   header {
+    position: fixed;
+    top: 0;
+    overflow: avoid;
+  }
+  .maindiv{
+    page-break-inside: avoid;
+  }
+  
+  .hidden-print{
+  display: none;
+}
+}*/
+
+            
+        </style>-->
+    </head>
+    <body>
+
+
+        <form action="updateinput" method="POST">
+            {% csrf_token %}
+            <input type="text" id="numco" name="numco" value="{{numco}}" placeholder="{{numco}}">
+        <table class="outertable" id="outertable">
+            <thead>
+                <tr>
+                    <td>
+        <header class="header-info">
+        <div id="header">
+            <center>
+            <table >
+            <tr>
+                <td id="image">
+            <img src="{% static "symbol.jpg" %}"  alt="home" width="100px" height="100px"/>
+            </td>
+            <td >
+                <center>
+            <h1 class="heading1"id="head1">SRI VASAVI ENGINEERING COLLEGE(AUTONAMOUS)</h1>
+            <h3 class="heading2" id="head2">PEDATADEPALLI TADEPALLIGUDEM-534101</h3>
+            <h2 class="heading3" id="head3">Department of {{branch}}</h2>
+            </center>
+            </tr>
+            </tr>
+            
+        </table>
+    
+        
+    </center>
+    </div>
+    <div style="height:8px" id="hrdownline1"></div>
+    <hr class="secondhr">
+        </div>
+    </header>
+</td>
+</tr>
+</thead>
+<tbody>
+    <tr>
+        <td>
+<div class="maindiv">
+    <center>
+        <h2 id="lessonplan">Lesson Plan</h2>
+    </center>
+            <div id="lesson_plan_details">
+             
+                <table width="80%" class="lesson_plan_details_table" >
+                    <tr>
+                        <td width="60%" ><div class="lesson_plan_details_row"><h3 class="batch_h3">Batch:</h3></h3><h3 class="batch_h3_details"><input name="batch" value="{{bat.batch}}" placeholder="{{bat.batch}}"></h3></div></td>
+                        <td width="30%" ></td>
+                    </tr>
+                    <tr >
+                        <td><div class="lesson_plan_details_row"><h3 class="batch_h3">AcademicYear:</h3><h3 class="batch_h3_details"><input name="academicyear" value="{{bat.academicyear}}" placeholder="{{bat.academicyear}}"></div></td>
+                        <td ><div class="lesson_plan_details_row"><h3 class="batch_h3">Programme:</h3><h3 class="batch_h3_details"><input name="programme" value="{{bat.programme}}" placeholder="{{bat.programme}}"></div></td>
+                    </tr>
+                    <tr >
+                        <td ><div class="lesson_plan_details_row"><h3 class="batch_h3">Semester:</h3><h3 class="batch_h3_details"><input name="semester" value="{{bat.semester}}" placeholder="{{bat.semester}}"></h3></div></td>
+                        <td ><div class="lesson_plan_details_row"><h3 class="batch_h3">Section:</h3><h3 class="batch_h3_details"><input name="section" value="{{bat.section}}" placeholder=""></h3></div></td>
+                    </tr>
+                    <tr >
+                        <td ><div class="lesson_plan_details_row"><h3 class="batch_h3">Name of the course:</h3><h3 class="batch_h3_details"><input name="nameofthecourse" value="{{bat.name_of_the_course}}" placeholder="{{bat.name_of_the_course}}"></h3></div></td>
+                        <td ><div class="lesson_plan_details_row"><h3 class="batch_h3">Course Code:</h3><h3 class="batch_h3_details"><input name="coursecode" value="{{bat.course_code}}" placeholder="{{bat.course_code}}"></h3></div></td>
+                    </tr>
+                </table>
+            </div>
+        <hr class="hr123">
+            <div id="courseoutcomes">
+                <h2 class="lessonplan">Course Outcomes (Along With Knowleddge Level):</h2>
+                <h2 class="below_heading">After Completion of this course, the student will be able to:</h2>
+                <table border="1" cellpadding="20px" width="90%">
+                    <thead>
+                        <td>CO</td>
+                        <td>Course Outcomes</td>
+                        <td>knowledge Level</td>
+                    </thead>
+                    {% for i,j in result_coF %}
+                    <tr>
+                        <td><input name="{{j.0}}" value="{{i.co}}" placeholder="{{i.co}}"></td>
+                        <td class="align_left"><input name="{{j.1}}" value="{{i.courseoutcome}}" placeholder="{{i.courseoutcome}}"></td>
+                        <td><input name="{{j.2}}" value="{{i.knowledge_level}}" placeholder="{{i.knowledge_level}}"></td>
+                    </tr>
+                    {% endfor %}
+                    
+                </table>
+            </div>
+        
+            <div id="textbooks">
+                <input type="text" name="copytexbook" value="{{textbook_len}}" class="copy" placeholder="{{textbook_len}}" id="copytb">
+                <h2 class="lessonplan heads">TextBooks</h2>
+                <table border="0" cellpadding="10px" width="90%" class="tb_rb" id="textbook_table">
+                    {% for i,j in textbookF%}
+                    <tr  id="rmtb{{i.sno}}">
+                        <td><input name="" value="{{i.sno}}" placeholder="{{i.sno}}"></td>
+                        <td class="align_left"><input name="{{j}}" value="{{i.textbook_details}}" placeholder="{{i.textbook_details}}"></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div onclick="rmtb()" class="remove_button"><center> REMOVE</center></div>
+            <div class="adding_button" onclick="textbook()"><center>+ADD</center></div>
+            <div id="referencebooks">
+                <h2 class="lessonplan heads">Reference Books</h2>
+                <input type="text" name="copyreferencebook" value="{{rfbook_len}}" class="copy" placeholder="{{rfbook_len}}" id="copyrb">
+                <table border="0" cellpadding="10px" width="90%" class="tb_rb" id="referencebook_table">
+                    {% for i,j in rfbookF %}
+                    <tr id="rmrb{{i.sno}}">
+                        <td><input name="" value="{{i.sno}}" placeholder="{{i.sno}}"></td>
+                        <td class="align_left"><input name="{{j}}" value="{{i.rfbook_details}}" placeholder="{{i.rfbook_details}}"></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <div class="adding_button" onclick="referencebook()"><center>+ADD</center></div>
+                <div onclick="rmrb()" class="remove_button"><center> REMOVE</center></div>
+            </div>
+            <div id="targetproficiency">
+                <h2 class="lessonplan heads">targetproficiency and attainment Levels(for each course outcome)</h2>
+                <table border="1" cellpadding="10px" width="90%">
+                    <thead>
+                        <td>Cos</td>
+                        <td>targetproficiencylevel</td>
+                        <td>level3</td>
+                        <td>level2</td>
+                        <td>level1</td>
+                    </thead>
+                    {% for i,j in tpF %}
+                    <tr>
+                        <td><input name="{{j.0}}" value="{{i.co}}" placeholder="{{i.co}}"></td>
+                        <td><input name="{{j.1}}" value="{{i.tpl}}" placeholder="{{i.tpl}}"></td>
+                        <td><input name="{{j.2}}" value="{{i.l3}}" placeholder="{{i.l3}}"></td>
+                        <td><input name="{{j.3}}" value="{{i.l2}}" placeholder="{{i.l2}}"></td>
+                        <td><input name="{{j.4}}" value="{{i.l1}}" placeholder="{{i.l1}}"></td>
+                    </tr>
+                    {% endfor %}
+                   
+
+                </table>
+
+                
+            </div>
+            <div id="lectureplan">
+                <h2 class="lessonplan heads">lecture Plan</h2>
+                {% for i,a in lstF %}
+                <table border="1" cellpadding="15px" width="90%" class="costable" id="tb{{a}}">
+                    <thead>
+                        <td>S.No</td>
+                        <td>Course Outcome</td>
+                        <td>Intended Learning outcomes(ILO)</td>
+                        <td>Knowledge Level of ILO</td>
+                        <td>No.of hours Required</td>
+                        <td>pedagogy</td>
+                        <td>teaching aids</td>
+                    </thead>
+                    {% for j,k in i %}
+                    <tr id="co{{a}}trm{{j.sno}}">
+                        <td><input name="{{k.0}}" value="{{j.sno}}" placeholder="{{j.sno}}"></td>
+                        <td><input name="{{k.1}}" value="{{j.course_outcome}}" placeholder="{{j.course_outcome}}"></td>
+                        <td class="align_left"><input name="{{k.2}}" value="{{j.ilo}}" placeholder="{{j.ilo}}"></td>
+                        <td><input name="{{k.3}}" value="{{j.knowledgelevel}}" placeholder="{{j.knowledgelevel}}"></td>
+                        <td><input name="{{k.4}}" value="{{j.noof_hours}}" placeholder="{{j.noof_hours}}"></td>
+                        <td class="align_left"><input name="{{k.5}}" value="{{j.pedagogy}}" placeholder="{{j.pedagogy}}"></td>
+                        <td class="align_left"><input name="{{k.6}}" value="{{j.teachingaids}}" placeholder="{{j.teachingaids}}"></td>
+                    </tr>
+                    {% endfor %}
+                    
+                </table>
+                <input name="tempinp{{a}}" id="tempinp{{a}}">
+                <div id="id{{a}}" class="adding_button">+ADD</div>
+                    <div id="rm{{a}}" class="remove_button">-Remove</div>
+                {% endfor %}
+               
+            </div>
+            <div id="co-psomatrix">
+                <h2 class="lessonplan heads">Co-Po&CO-PSO Matrix</h2>
+                <table border="1" width="70%" cellpadding="7px">
+                    <thead>
+                        <td>Cos/Pos,Psos</td>
+                        <td>PO1</td>
+                        <td>PO2</td>
+                        <td>PO3</td>
+                        <td>PO4</td>
+                        <td>PO5</td>
+                        <td>PO6</td>
+                        <td>PO7</td>
+                        <td>PO8</td>
+                        <td>PO9</td>
+                        <td>PO10</td>
+                        <td>PO11</td>
+                        <td>PO12</td>
+                        <td>psos1</td>
+                        <td>psos2</td>
+                    </thead>
+                    {% for i,j in copsomatF %}
+                    <tr>
+                        <td><input name="{{j.0}}" value="{{i.cos}}" placeholder="{{i.cos}}"></td>
+                        <td><input name="{{j.1}}" value="{{i.po1}}" placeholder="{{i.po1}}"></td>
+                        <td><input name="{{j.2}}" value="{{i.po2}}" placeholder="{{i.po2}}"></td>
+                        <td><input name="{{j.3}}" value="{{i.po3}}" placeholder="{{i.po3}}"></td>
+                        <td><input name="{{j.4}}" value="{{i.po4}}" placeholder="{{i.po4}}"></td>
+                        <td><input name="{{j.5}}" value="{{i.po5}}" placeholder="{{i.po5}}"></td>
+                        <td><input name="{{j.6}}" value="{{i.po6}}" placeholder="{{i.po6}}"></td>
+                        <td><input name="{{j.7}}" value="{{i.po7}}" placeholder="{{i.po7}}"></td>
+                        <td><input name="{{j.8}}" value="{{i.po8}}" placeholder="{{i.po8}}"></td>
+                        <td><input name="{{j.9}}" value="{{i.po9}}" placeholder="{{i.po9}}"></td>
+                        <td><input name="{{j.10}}" value="{{i.po10}}" placeholder="{{i.po10}}"></td>
+                        <td><input name="{{j.11}}" value="{{i.po11}}" placeholder="{{i.po11}}"></td>
+                        <td><input name="{{j.12}}" value="{{i.po12}}" placeholder="{{i.po12}}"></td>
+                        <td><input name="{{j.13}}" value="{{i.pso1}}" placeholder="{{i.pso1}}"></td>
+                        <td><input name="{{j.14}}" value="{{i.pso2}}" placeholder="{{i.pso2}}"></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div id="course_end_survey_questionaire">
+                <h2 class="lessonplan heads">Course End Survey questionaire</h2>
+                <table border="1" cellpadding="12px" width="90%">
+                    <thead>
+                        <td>SNO</td>
+                        <td>COs</td>
+                        <td>Question</td>
+                    </thead>
+                    {% for i,j in questionF%}
+                    <tr>
+                        <td><input name="{{j.0}}" value="{{i.sno}}" placeholder="{{i.sno}}"></td>
+                        <td><input name="{{j.1}}" value="{{i.cos}}" placeholder="{{i.cos}}"></td>
+                        <td class="align_left"><input name="{{j.2}}" value="{{i.question}}" placeholder="{{i.question}}"></td>
+                    </tr>
+                    {% endfor %}
+                    
+                </table>
+            </div>
+            <div id="details_of_course_instructor">
+                <h2 class="lessonplan heads">Details of Course Instructor</h1>
+                <table border="1" width="80%" cellpadding="30px">
+                    <thead>
+                        <td>S.No</td>
+                        <td >Name of the Course Instructor</td>
+                        <td>Designation</td>
+                        <td>Year</td>
+                        <td>Section</td>
+                        <td >Contact No</td>
+                        <td> & e-mail:</td>
+                        <td>Signature of Course Instructor</td>
+                    </thead>
+                   
+                    {% for i in instructor%}
+                    <tr>
+                        <td><input name="" value="{{i.sno}}" placeholder="{{i.sno}}"></td>
+                        <td><input name="insname" value="{{i.name}}" placeholder="{{i.name}}"></td>
+                            <td><input name="insdes" value="{{i.designation}}" placeholder="{{i.designation}}"></td>
+                        <td><input name="insyear" value="{{i.year}}" placeholder="{{i.year}}"></td>
+                        <td><input name="inssec" value="{{i.section}}" placeholder="{{i.section}}"></td>
+                        <td><input name="inscno" value="{{i.contactno}}" placeholder="{{i.contactno}}"></td>
+                        <td><input name="insemail" value="{{i.email}}" placeholder="{{i.email}}"></td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <h2 class="below_heading signs">Name of the Course Coordinator (with Designation):{{i.name}},{{i.designation}}</h2>
+                <h2 class="below_heading signs">Signature of the Course Coordinator:</h2>
+                <h2 class="below_heading signs">Signature of the Module Coordinator:</h2>
+                <h2 class="below_heading signs">Signature of the Head of the Department:</h2>
+            </div>
+            <button class="hidden-print printbut" onClick="window.print()">PDF</button>
+            <button class="hidden-print printbut" onclick="exportHTML()">Word</button>
+            <div class="empty"></div>
+        </div>
+    </td>
+    </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                <div class="footer"></div>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<input type="submit" name="submit">
+</form>
+<script>
+    /* function Export2Word(cls)
+{
+ /*var div = document.createElement("div");
+ div.id = "export-content";
+ div.innerHTML = "<p>this is going to be paragraph </p>";
+ document.body.appendChild(div);
+ $("cls").wordExport();
+}*/
+/* adding functions to the buttons*/
+console.log("hello");
+var lessonplantb="tb";
+var tr_co='tr';
+var ilo='ilo';
+var knilo='knilo';
+var nfhr='nfhr';
+var pedagody='pedgy';
+var teachaids='tds';
+var lst_id=[];
+var lst_rm=[];
+var lst_tb_count=[];
+var lst_tempinp=[];
+var lst_tb=[];
+var lens="{{len_lst|safe}}";
+console.log(lens);
+var lens1=lens.slice(1,-1);
+var lens2=lens1.split(",");
+var lst_len=parseInt("{{lst_len|safe}}");
+for(let i=0;i<lst_len;i++){
+    lst_id.push("id"+i);
+    lst_rm.push("rm"+i);
+    
+    lst_tempinp.push("tempinp"+i);
+    lst_tb.push("tb"+i);
+    console.log(i);
+}
+for(let k=0;k<lst_len;k++){
+    let td=document.getElementById(lst_tempinp[k]);
+  
+    td.setAttribute("value",lens2[k]);
+    lst_tb_count.push(parseInt(lens2[k]));
+    
+    td.setAttribute("placeholder",lens2[k]);
+}
+
+
+const rmpressed = e =>{
+    console.log("in remove");          
+    let n=e.target.id;
+    console.log(n);
+    num=n.substr(2);
+    if(lst_tb_count[num]===1){
+        alert("its mandatory");
+    }
+    else{
+        console.log('co'+num+'trm'+lst_tb_count[num]);
+        console.log(lst_tb_count);
+        console.log("in rm else");
+    let tr=document.getElementById('co'+num+'trm'+lst_tb_count[num]);
+    tr.remove();
+    lst_tb_count[num]=lst_tb_count[num]-1;
+    t=lst_tempinp[num];
+        inp=document.getElementById(t);
+        inp.setAttribute('value',lst_tb_count[num]);
+        inp.setAttribute('placeholder',lst_tb_count[num]);
+    }
+}
+const buttonPressed = e => { 
+console.log("in addbutton",lst_tb_count);
+let n=e.target.id;
+var num=n.substr(2);
+console.log(n.substr(2));
+let tb=document.getElementById(lst_tb[num]);
+lst_tb_count[num]=lst_tb_count[num]+1;
+let tr=document.createElement('tr');
+tr.setAttribute('id','co'+num+'trm'+lst_tb_count[num]);
+    tb.append(tr);
+    let td1=document.createElement('td');
+    //td1.setAttribute('rowspan','100');
+    //let temp=j+1
+    //let b=temp.toString();
+    //let c=cos+(j+1);
+    td1.innerHTML=lst_tb_count[num];
+    let td2=document.createElement('td');
+    td2.innerHTML="CO"+(parseInt(num)+1);
+    //let td2=document.createElement('td');
+    //td2.innerHTML=c;
+    let td3=document.createElement('td');
+    let td4=document.createElement('td');
+    let td5=document.createElement('td');
+    let td6=document.createElement('td');
+    let td7=document.createElement('td');
+    var inp1=document.createElement('input');
+    var inp2=document.createElement('input');
+    var inp3=document.createElement('input');
+    var inp4=document.createElement('input');
+    var inp5=document.createElement('input');
+    inp1.style.width="300px";
+    inp2.style.width="100px";
+    inp3.style.width="220px";
+    inp4.style.width="100px";
+    inp5.style.width="150px";
+    // inp1.setAttribute('required','');
+    // inp2.setAttribute('required','');
+    // inp3.setAttribute('required','');
+    // inp4.setAttribute('required','');
+    // inp5.setAttribute('required','');
+    inp1.setAttribute('name','co'+num+ilo+(lst_tb_count[num]-1));
+    inp2.setAttribute('name','co'+(num)+knilo+(lst_tb_count[num]-1));
+    inp3.setAttribute('name','co'+(num)+nfhr+(lst_tb_count[num]-1));
+    inp4.setAttribute('name','co'+(num)+pedagody+(lst_tb_count[num]-1));
+    inp5.setAttribute('name','co'+(num)+teachaids+(lst_tb_count[num]-1));
+    tr.append(td1);
+    tr.append(td2);
+    tr.append(td3);
+    tr.append(td4);
+    tr.append(td5);
+    tr.append(td6);
+    tr.append(td7);
+    td3.append(inp1);
+    td4.append(inp2);
+    td5.append(inp3);
+    td6.append(inp4);
+    td7.append(inp5);
+    t=lst_tempinp[num];
+    inp=document.getElementById(t);
+    inp.setAttribute('value',lst_tb_count[num]);
+    inp.setAttribute('placeholder',lst_tb_count[num]);
+}
+var buttons=document.getElementsByClassName('adding_button');
+for (let button of buttons) {
+    button.addEventListener("click", buttonPressed);
+}
+var rbuttons=document.getElementsByClassName('remove_button');
+for (let button of rbuttons) {
+    button.addEventListener("click", rmpressed);
+}
+var count_textbook=parseInt("{{textbook_len|safe}}");
+var tb=['rmtb0','rmtb1','rmtb2','rmtb3','rmtb4','rmtb5','rmtb6','rmtb7','rmtb8','rmtb9','rmtb10','rmtb11','rmtb12','rmtb13','rmtb14','rmtb15','rmtb16','rmtb17','rmtb18','rmtb19','rmtb20','rmtb21','rmtb22','rmtb23','rmtb24','rmtb25','rmtb26','rmtb27','rmtb28','rmtb29','rmtb30'];
+var list_textbook=['tb0','tb1','tb2','tb3','tb4','tb5','tb6','tb7','tb8','tb9','tb10','tb11','tb12','tb13','tb14','tb15','tb16','tb17','tb18','tb19','tb20','tb21','tb22','tb23','tb24','tb25','tb26','tb27','tb28','tb29','tb30'];
+
+function textbook(){
+ if(count_textbook==30){
+     alert('only ten 30 textbooks');
+ }
+ else{
+     var tab=document.getElementById("textbook_table");
+     var row=document.createElement('tr');
+     var td1=document.createElement('td');
+     var td2=document.createElement('td');
+     var inp=document.createElement('input');
+     td1.setAttribute('value',count_textbook);
+     td1.innerHTML=count_textbook+1;
+     row.setAttribute('id',"rmtb"+count_textbook);
+     inp.setAttribute('type','text');
+     inp.setAttribute('name',"tb"+count_textbook);
+     //inp.setAttribute('required','');
+     inp.setAttribute('class','textbooks_inputdiv');
+     tab.append(row);
+     row.append(td1);
+     row.append(td2);
+     td2.append(inp);
+     count_textbook+=1;
+     var copytb=document.getElementById('copytb');
+     copytb.setAttribute('value',count_textbook);
+     copytb.setAttribute('placeholder',count_textbook);
+
+ }
+}
+function rmtb(){
+ if(count_textbook==1){
+     alert('its mandatory');
+ }
+ else{
+     var rm=document.getElementById(tb[count_textbook-1]);
+     rm.remove();
+     console.log("********************************");
+     count_textbook=count_textbook-1;
+     let cptb=document.getElementById("copytb");
+        cptb.setAttribute("value",count_textbook);
+        cptb.setAttribute("placeholder",count_textbook);
+ }
+}
+var count_referencebook=parseInt("{{rfbook_len|safe}}")
+var rb=['rmrb1','rmrb2','rmrb3','rmrb4','rmrb5','rmrb6','rmrb7','rmrb8','rmrb9','rmrb10','rmrb11','rmrb12','rmrb13','rmrb14','rmrb15','rmrb16','rmrb17','rmrb18','rmrb19','rmrb20','rmrb21','rmrb22','rmrb23','rmrb24','rmrb25','rmrb26','rmrb27','rmrb28','rmrb29','rmrb30'];
+var list_referencebook=['rb1','rb2','rb3','rb4','rb5','rb6','rb7','rb8','rb9','rb10','rb11','rb12','rb13','rb14','rb15','rb16','rb17','rb18','rb19','rb20','rb21','rb22','rb23','rb24','rb25','rb26','rb27','rb28','rb29','rb30'];
+function rmrb(){
+ if(count_referencebook==1){
+     alert('its mandatory');
+ }
+ else{
+     var rm=document.getElementById(rb[count_referencebook-1]);
+     rm.remove();
+     
+     count_referencebook=count_referencebook-1;
+     var cptb=document.getElementById("copyrb");
+     cptb.setAttribute("value",count_referencebook);
+     cptb.setAttribute("placeholder",count_referencebook);
+ }
+}
+function referencebook(){
+ if(count_referencebook==30){
+     alert('only ten 10 referencebooks');
+ }
+ else{
+    
+     var copyrb=document.getElementById('copyrb');
+     
+     var tab=document.getElementById("referencebook_table");
+     var row=document.createElement('tr');
+     var td1=document.createElement('td');
+     var td2=document.createElement('td');
+     var inp=document.createElement('input');
+     row.setAttribute('id',"rmrb"+count_referencebook);
+     td1.setAttribute('value',count_referencebook);
+     td1.innerHTML=count_referencebook+1;
+     inp.setAttribute('type','text');
+     inp.setAttribute('name',"rb"+count_referencebook);
+     inp.setAttribute('class','referencebook_inputdiv');
+     //inp.setAttribute('required','');
+     tab.append(row);
+     row.append(td1);
+     row.append(td2);
+     td2.append(inp);
+     count_referencebook+=1;
+     copyrb.setAttribute('value',count_referencebook);
+     copyrb.setAttribute('placeholder',count_referencebook);
+ }
+}
+     </script>
+        </body>
+
+    
+</html>

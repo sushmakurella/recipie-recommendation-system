@@ -1,0 +1,51 @@
+<html>
+    
+    <body>
+        <div id="jgd">dummy
+
+            <!-- <table border="1" cellpadding="20px" width="90%">
+                <thead>
+                    <td>CO</td>
+                    <td>Course Outcomes</td>
+                    <td>knowledge Level</td>
+                </thead>
+                {% for i,j in result_co|zip:jg %}
+                <tr>
+                    <td><input value="{{i.co}}" placeholder="{{i.co}}" name="nm"+str(j)></td>
+                    <td class="align_left"><input value="{{i.courseoutcome}}" placeholder="{{i.courseoutcome}}"></td>
+                    <td><input value="{{i.knowledge_level}}" placeholder="{{i.knowledge_level}}"> </td>
+                </tr>
+                {% endfor %} -->
+                
+            </table>
+        </div>
+        <script>
+            var s = "{{l|safe}}";
+            var r = "{{result_co|safe}}";
+            const jdata=JSON.parse('{{ result_co|escapejs }}');
+            console.log(jdata);
+            console.log(r);
+            var r1 = r.slice(1,-1);
+            var r2 = r1.split(",");
+            console.log(s);
+            console.log(r2);
+            for(let i=0;i<s;i++)
+            {
+                let dd=document.getElementById("jgd");
+                console.log(dd);
+                let d = document.createElement("input");
+                d.setAttribute('value',i);
+                d.setAttribute("name","i"+i);
+                dd.append(d);
+            }
+            for(const a of r){
+                for(const b of a){
+                    console.log(b);
+                    console.log(b["co"]);
+                }
+            }
+        </script>
+        
+            
+    </body>
+</html>

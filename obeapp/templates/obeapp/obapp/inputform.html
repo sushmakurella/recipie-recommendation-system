@@ -1,0 +1,1247 @@
+<html>
+    <head>
+        <style>
+            *{
+    font-family: 'Open Sans', sans-serif;
+}
+#maindiv{
+    width:80%;
+    border-color: #0078AA;
+    border-style: groove;
+    border-radius: 15px;
+    /*position: relative;*/
+    margin:auto;
+}
+input{
+    color: #404258;
+    font-size: 20;
+    font-weight: 500;
+    padding-left: 10px;
+}
+#lesson_plan_details,#courseoutcomes,#textbooks,#referencebooks,#targetproficiency,#lectureplan,#co-psomatrix,#course_end_survey_questionaire,#details_of_course_instructor{
+    position: relative;
+    margin-top:30px;
+    margin-left: 70px;
+}
+
+h3{
+    color: #567189;
+}
+thead{
+    color: #567189;
+    font-size: 23;
+    font-weight: 500; 
+}
+h1{
+    color: #567189;  
+}
+
+.lesson_plan_details_inputdiv{
+    width: 300px;
+    height: 30px;
+    position: relative;
+    bottom: 5px;
+    border-style: groove;
+    border-color: #7B8FA1;
+    border-radius: 5px;
+}
+.input_div{
+    margin-right: 30px;
+    padding-right: 100px;
+}
+table,th,td{
+    border-collapse: collapse;
+    border-color: #4B56D2;
+}
+
+.courseoutcomes_secondinputdiv{
+    width:800px;
+    height: 50px;
+    border-color: #9CB4CC;
+    border-style: groove;
+}
+.co_knowledgelevel{
+    height: 50px;
+    border-color: #9CB4CC;
+    border-style: groove;
+}
+.textbooks_inputdiv,.referencebook_inputdiv{
+    height: 50px;
+    width:1000px;
+    border-color: #9CB4CC;
+    border-style: groove;
+}
+.adding_button{
+    width: 100px;
+    height: 30px;
+    position: relative;
+    top:10px;
+    left:940px;
+    border-style: groove;
+    border-radius: 10px;
+    background-color: #00337C;
+    color: white;
+    font-size: 20;
+    font-weight: 500;
+    text-align: center;
+}
+.remove_button{
+    width: 100px;
+    height: 30px;
+    position: relative;
+    left:800px;
+    bottom: 25px;
+    border-style: groove;
+    border-radius: 10px;
+    background-color: #3a7ddb;
+    color: white;
+    font-size: 20;
+    font-weight: 500;
+    text-align: center;
+}
+.targetproficiency_inputdiv{
+    height: 50px;
+    width:150px;
+    border-color: #9CB4CC;
+    border-style: groove;
+}
+.tab{
+    margin:30px 0 30px 0;
+}
+#lectureplan{
+    margin-right: 20px;
+}
+.lectureplan_co{
+    width: 150px;
+    height: 50px;
+    border-color: #9CB4CC;
+    border-style: groove;
+}
+.lectureplan_co_int{
+    width:300px;
+    height: 50px;
+    border-color: #9CB4CC;
+    border-style: groove;
+}
+.copso_input{
+    width:65px;
+    height: 30px;
+    
+    border-style: none;
+    /*border-color: #7B8FA1;
+    border-style: groove;*/
+    
+}
+.question{
+    height: 50px;
+    width: 900px;
+}
+.ins{
+    width:310px;
+    height:50px;
+}
+.ys{
+    width:120px;
+    height:50px;
+}
+.des{
+    width:120px;
+    height:50px;
+}
+.sec{
+    width:120px;
+    height:50px;
+}
+.cno{
+    width:120px;
+    height:50px;
+}
+.em{
+    width:120px;
+    height:50px;
+}
+.copy{
+    display:none;
+}
+span{
+    color:red;
+}
+.msg{
+    color: red;
+}
+#recheck{
+    border-style:groove;
+    border-color: #00337C;
+    width: 140px;
+    height: 40px;
+    margin-left: 600px;
+    margin-top: 40px;
+    text-align: cenetr;
+    font-size: 25;
+    font-weight: 700;
+    padding-left: 40px;
+}
+#submit1{
+    display: none;
+    position: absolute;
+    top:3500px;
+    left:600px;
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 8px 8px 8px #6B728E;
+
+}
+.h5indiv{
+    position: relative;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-size: 20;
+    font-weight: 500;
+    color:#E90064;
+}
+.temptable{
+    position: relative;
+    margin-left: 150px;
+    margin-top: 50px;
+}
+.no{
+    width: 45px;
+    height: 35px;
+    border-style: groove;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #df307c;
+    color:white;
+    font-size: 20;
+    font-weight: 500;
+}
+.yes{
+    width: 50px;
+    height: 40px;
+    border-style: groove;
+    border-radius: 5px;
+    background-color: #19A7CE;
+    color:white;
+}
+.tds{
+    position: relative;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+/******************************/
+#courseoutcomes{
+    display: none;
+}
+#maindiv{
+    position: relative;
+    display:none;
+}
+#dytab{
+    
+    /*width:50%;*/
+    margin-right: 20px;
+}
+#div123{
+    width:400px;
+}
+
+.dytab {
+    border-collapse: collapse;
+    margin-left: 60px;
+    margin-top: 20px;
+}
+#ctbp{
+    border-collapse: collapse;
+    margin-left: 60px;
+    margin-top: 20px;
+}
+#courseend_survey{
+    border-collapse: collapse;
+    margin-left: 60px;
+    margin-top: 20px;
+}
+#instbb{
+    border-collapse: collapse;
+    margin-left: 60px;
+    margin-top: 20px;
+}
+input{
+    width: auto;
+    height:50px;
+}
+#submitl{
+    display:none;
+    width:200px;
+    height: 50px;
+    border-style: groove;
+    border-color:#245953 ;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 400;
+}
+#submitl:hover{
+    background-color: #35dfcb;
+}
+#submits{
+    border-color: #00337C;
+    border-style:groove;
+    border-radius: 5px;
+    width:100px;
+    height:25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color:white;
+    background:linear-gradient(hsl(240, 46%, 43%),rgb(150, 150, 206));
+}
+#submits:hover{
+    opacity:0.5;
+}
+input{
+    border: none;
+    border-style: none;
+}
+td{
+    height: 50px;
+}
+#numco{
+    border-style: groove;
+    border-width: 3px;
+    border-radius: 5px;
+    border-color: #00235B;
+    width:250px;
+    height:40px;
+}
+   
+
+
+        </style>
+    </head>
+    <body>
+        <script>
+            var lst_id=[];
+            var lst_rm=[];
+            var lst_rm_count=[];
+            var lst_tb=[];
+            var lst_tb_count=[];
+            var lst_tempinp=[];
+            var lessonplantb="tb";
+            var tr_co='tr';
+            var ilo='ilo';
+            var knilo='knilo';
+            var nfhr='nfhr';
+            var pedagody='pedgy';
+            var teachaids='tds';
+            function add(n){
+                var butt=document.getElementsByClassName('addbut');
+                console.log(butt);
+                console.log(lst_id);
+            }
+            const rmpressed = e =>{
+                
+                let n=e.target.id;
+                num=n.substr(2);
+                if(lst_tb_count[num]===1){
+                    alert("its mandatory");
+                }
+                else{
+                    console.log('co'+num+'trm'+lst_tb_count[num]);
+                    console.log(lst_tb_count);
+                let tr=document.getElementById('co'+num+'trm'+lst_tb_count[num]);
+                tr.remove();
+                lst_tb_count[num]=lst_tb_count[num]-1;
+                t=lst_tempinp[num];
+                    inp=document.getElementById(t);
+                    inp.setAttribute('value',lst_tb_count[num]);
+                    inp.setAttribute('placeholder',lst_tb_count[num]);
+                }
+            }
+            const buttonPressed = e => { 
+                console.log("in addbutton",lst_tb_count);
+                let n=e.target.id;
+                num=n.substr(2);
+                console.log(n.substr(2));
+                let tb=document.getElementById(lst_tb[num]);
+                lst_tb_count[num]=lst_tb_count[num]+1;
+                let tr=document.createElement('tr');
+                tr.setAttribute('id','co'+num+'trm'+lst_tb_count[num]);
+                    tb.append(tr);
+                    let td1=document.createElement('td');
+                    //td1.setAttribute('rowspan','100');
+                    //let temp=j+1
+                    //let b=temp.toString();
+                    //let c=cos+(j+1);
+                    td1.innerHTML=lst_tb_count[num];
+                    
+                    //let td2=document.createElement('td');
+                    //td2.innerHTML=c;
+                    let td3=document.createElement('td');
+                    let td4=document.createElement('td');
+                    let td5=document.createElement('td');
+                    let td6=document.createElement('td');
+                    let td7=document.createElement('td');
+                    var inp1=document.createElement('input');
+                    var inp2=document.createElement('input');
+                    var inp3=document.createElement('input');
+                    var inp4=document.createElement('input');
+                    var inp5=document.createElement('input');
+                    inp1.style.width="300px";
+                    inp2.style.width="100px";
+                    inp3.style.width="220px";
+                    inp4.style.width="100px";
+                    inp5.style.width="150px";
+                    // inp1.setAttribute('required','');
+                    // inp2.setAttribute('required','');
+                    // inp3.setAttribute('required','');
+                    // inp4.setAttribute('required','');
+                    // inp5.setAttribute('required','');
+                    inp1.setAttribute('name','co'+num+ilo+lst_tb_count[num]);
+                    inp2.setAttribute('name','co'+(num)+knilo+lst_tb_count[num]);
+                    inp3.setAttribute('name','co'+(num)+nfhr+lst_tb_count[num]);
+                    inp4.setAttribute('name','co'+(num)+pedagody+lst_tb_count[num]);
+                    inp5.setAttribute('name','co'+(num)+teachaids+lst_tb_count[num]);
+                    tr.append(td1);
+                    //tr.append(td2);
+                    tr.append(td3);
+                    tr.append(td4);
+                    tr.append(td5);
+                    tr.append(td6);
+                    tr.append(td7);
+                    td3.append(inp1);
+                    td4.append(inp2);
+                    td5.append(inp3);
+                    td6.append(inp4);
+                    td7.append(inp5);
+                    t=lst_tempinp[num];
+                    inp=document.getElementById(t);
+                    inp.setAttribute('value',lst_tb_count[num]);
+                    inp.setAttribute('placeholder',lst_tb_count[num]);
+                    
+
+            }
+            function numco(){
+               // console.log("hello1");
+               
+                // hiding submit button
+                var sub=document.getElementById('submits');
+                sub.style.display='none';
+                var hd=document.getElementById('mainhead');
+                var inphd=document.getElementById('numco');
+                hd.style.display='none';
+                inphd.style.display='none';
+                
+               
+                let cos="coo";
+                let kls="kl";
+                /*var tb=document.createElement("table");
+                tb.setAttribute('id','cotable');
+                tb.style.width="90px";*/
+                var mnd=document.getElementById('maindiv');
+                mnd.style.display='block';
+                var mn=document.getElementById('main');
+                var subj=document.getElementById('submitl');
+                subj.style.display='block';
+                //mn.style.display="visible";
+               /* var cotbdiv=document.getElementById("courseoutcomes");
+                cotbdiv.append(tb);
+                var th=document.createElement('thead');
+                var th1=document.createElement('td');
+                var th2=document.createElement('td');
+                var th3=document.createElement('td');
+                th1.style.width="10%";
+                th2.style.width="70%";
+                th3.style.width="10%";
+                th1.innerHTML="SNO";
+                th2.innerHTML="course outcomes";
+                th3.innerHTML="knowledgelevels";
+                tb.setAttribute('border','1');
+                tb.append(th);
+                th.append(th1);
+                th.append(th2);
+                th.append(th3);*/
+                var n=parseInt(document.getElementById('numco').value);
+                //************************
+                //adding CO table(single table)
+                //**************************
+                
+                var cotb=document.getElementById('coursetable');
+                var codiv=document.getElementById('courseoutcomes');
+                codiv.style.display='block';
+                for(var i=0;i<n;i++){
+                    console.log("hello in for loop");
+                    var tr=document.createElement('tr');
+                    var td1=document.createElement('td');
+                    var td2=document.createElement('td');
+                    var td3=document.createElement('td');
+                    var inp1=document.createElement('input');
+                    var inp2=document.createElement('input');
+                    inp1.setAttribute('class',"courseoutcomes_secondinputdiv");
+                    inp2.setAttribute('class',"co_knowledgelevel");
+                    inp2.style.width="140px";
+                    //let num=i.toString();
+                    let co=cos+(i+1);
+                    let kl=kls+(i+1);
+                    td1.innerHTML=(i+1);
+                    inp1.setAttribute('name',co);
+                    /*inp1.setAttribute('required','');
+                    inp2.setAttribute('required','');*/
+                    inp2.setAttribute('name',kl);
+                    cotb.append(tr);
+                    tr.append(td1);
+                    tr.append(td2);
+                    tr.append(td3);
+                    td2.append(inp1);
+                    td3.append(inp2);
+
+                }
+                //<div id="targetproficiency">
+                //*********** target proficiency table****************
+                var tpp=document.getElementById('targetproficiency');
+                var ctb=document.createElement('table');
+                ctb.setAttribute('border','1');
+                ctb.setAttribute('id','ctbp');
+                var cth=document.createElement('thead');
+                var cth1=document.createElement('td');
+                cth1.innerHTML="Cos";
+                var cth2=document.createElement('td');
+                cth2.innerHTML="TargetProficiencyLevel";
+                var cth3=document.createElement("td");
+                cth3.innerHTML="Level3";
+                var cth4=document.createElement("td");
+                cth4.innerHTML="Level2";
+                var cth5=document.createElement("td");
+                cth5.innerHTML="Level1";
+                tpp.append(ctb);
+                ctb.append(cth);
+                cth.append(cth1);
+                cth.append(cth2);
+                cth.append(cth3);
+                cth.append(cth4);
+                cth.append(cth5);
+                for(let c=0;c<n;c++){
+                    let ctr=document.createElement("tr");
+                    let ctr1=document.createElement("td");
+                    let ctr2=document.createElement("td");
+                    let ctr3=document.createElement("td");
+                    let ctr4=document.createElement("td");
+                    let ctr5=document.createElement("td");
+                    ctr1.innerHTML="CO"+(c+1);
+                    let cinp2=document.createElement("input");
+                    let cinp3=document.createElement("input");
+                    let cinp4=document.createElement("input");
+                    let cinp5=document.createElement("input");
+                    cinp2.style.width='250px';
+                    cinp3.style.width='150px';
+                    cinp4.style.width='150px';
+                    cinp5.style.width='150px';
+                    // cinp2.setAttribute('required','');
+                    // cinp3.setAttribute('required','');
+                    // cinp4.setAttribute('required','');
+                    // cinp5.setAttribute('required','');
+                    cinp2.setAttribute("name","co"+(c+1)+"l");
+                    cinp3.setAttribute('name',"co"+(c+1)+"l3");
+                    cinp4.setAttribute('name',"co"+(c+1)+"l2");
+                    cinp5.setAttribute('name',"co"+(c+1)+"l1");
+                    ctb.append(ctr);
+                    ctr.append(ctr1);
+                    ctr.append(ctr2);
+                    ctr.append(ctr3);
+                    ctr.append(ctr4);
+                    ctr.append(ctr5);
+                    ctr2.append(cinp2);
+                    ctr3.append(cinp3);
+                    ctr4.append(cinp4);
+                    ctr5.append(cinp5);
+
+                    
+                }
+
+
+
+                // ************************
+                //adding dynamic tables
+                //*************************
+                //<div id="lectureplan">
+                var lpdiv=document.getElementById('lectureplan')
+                for(var j=0;j<n;j++){
+                    let d=document.createElement('div');
+                    d.setAttribute('class','div123');
+                    let tb=document.createElement('table');
+                    tb.setAttribute('border','1');
+                    tb.setAttribute('class','dytab');
+                    tb.setAttribute('id',"tb"+j);
+                    lst_tb.push("tb"+j);
+                    lst_tb_count.push(1);
+                    let th=document.createElement('thead');
+                    let th1=document.createElement('td');
+                    let th2=document.createElement('td');
+                    let th3=document.createElement('td');
+                    let th4=document.createElement('td');
+                    let th5=document.createElement('td');
+                    let th6=document.createElement('td');
+                    let th7=document.createElement('td');
+                    lpdiv.append(d);
+                    d.append(tb);
+                    th1.innerHTML="Sno";
+                    th2.innerHTML="COs";
+                    th3.innerHTML="Integrated Learning out comes";
+                    th4.innerHTML="KnowledgeLevel of ilo";
+                    th5.innerHTML=" No of hours required";
+                    th6.innerHTML="Pedagogy";
+                    th7.innerHTML="Teaching Aids";
+                    tb.append(th);
+                    th.append(th1);
+                    th.append(th2);
+                    th.append(th3);
+                    th.append(th4);
+                    th.append(th5);
+                    th.append(th6);
+                    th.append(th7);
+                    let tr=document.createElement('tr');
+                    tr.setAttribute('id','co'+j+'trm'+1);
+                    tb.append(tr);
+                    let td1=document.createElement('td');
+                    
+                    let temp=j+1
+                    let b=temp.toString();
+                    let c=cos+(j+1);
+                    td1.innerHTML=1;
+                    let td2=document.createElement('td');
+                    td2.innerHTML='CO'+(j+1);
+                    td2.setAttribute('rowspan','100');
+                    let td3=document.createElement('td');
+                    let td4=document.createElement('td');
+                    let td5=document.createElement('td');
+                    let td6=document.createElement('td');
+                    let td7=document.createElement('td');
+                    let inp1=document.createElement('input');
+                    let inp2=document.createElement('input');
+                    let inp3=document.createElement('input');
+                    let inp4=document.createElement('input');
+                    let inp5=document.createElement('input');
+                    // inp1.setAttribute('required','');
+                    // inp2.setAttribute('required','');
+                    // inp3.setAttribute('required','');
+                    // inp4.setAttribute('required','');
+                    // inp5.setAttribute('required','');
+                    inp1.setAttribute('name','co'+(j)+ilo+1);
+                    inp2.setAttribute('name','co'+(j)+knilo+1);
+                    inp3.setAttribute('name','co'+(j)+nfhr+1);
+                    inp4.setAttribute('name','co'+(j)+pedagody+1);
+                    inp5.setAttribute('name','co'+(j)+teachaids+1);
+                    inp1.style.width="300px";
+                    inp2.style.width="100px";
+                    inp3.style.width="220px";
+                    inp4.style.width="100px";
+                    inp5.style.width="150px";
+                    tr.append(td1);
+                    tr.append(td2);
+                    tr.append(td3);
+                    tr.append(td4);
+                    tr.append(td5);
+                    tr.append(td6);
+                    tr.append(td7);
+                    td3.append(inp1);
+                    td4.append(inp2);
+                    td5.append(inp3);
+                    td6.append(inp4);
+                    td7.append(inp5);
+                    var tempinp=document.createElement('input');
+                    tempinp.setAttribute('id',"tempinp"+j);
+                    tempinp.setAttribute('name',"tempinp"+(j+1));
+                    tempinp.setAttribute('value',1);
+                    tempinp.setAttribute('placeholder',1);
+                    lst_tempinp.push("tempinp"+j);
+                    tempinp.innerHTML=j;
+                    var but=document.createElement('div');
+                    var butr=document.createElement('div');
+                    lst_id.push("id"+j);
+                    lst_rm.push("rm"+j);
+                    but.setAttribute('id',"id"+j);
+                    butr.setAttribute('id',"rm"+j);
+                    //but.setAttribute('class',"addbut");
+                    but.setAttribute('class',"adding_button");
+                    butr.setAttribute('class',"rmbut");
+                    butr.setAttribute('class',"remove_button");
+                    but.innerHTML="+ADD";
+                    butr.innerHTML="-REMOVE";
+                    d.append(but);
+                    d.append(butr)
+                    //but.setAttribute('onclick','add(j)');
+                    //but.addEventListener("click", function(){ add(); });
+                    d.append(tempinp);
+                    tempinp.style.display='none';
+                }
+            
+
+            //******************************
+            //co-po &copso matrix
+            //******************************
+               /* let pd=document.createElement('div');
+                let ptb=document.createElement('table');
+                let pth=document.createElement('thead');
+                let pth1=document.createElement('td');
+                let pth2=document.createElement('td');
+                let pth3=document.createElement('td');
+                let pth4=document.createElement('td');
+                let pth5=document.createElement('td');
+                let pth6=document.createElement('td');
+                let pth7=document.createElement('td');
+                let pth8=document.createElement('td');
+                let pth9=document.createElement('td');
+                let pth10=document.createElement('td');
+                let pth11=document.createElement('td');
+                let pth12=document.createElement('td');
+                let pth13=document.createElement('td');
+                let pth14=document.createElement('td');
+                let pth15=document.createElement('td');
+                pth1.innerHTML="Cos/POs,PSOs";
+                pth2.innerHTML="PO1";
+                pth3.innerHTML="PO2";
+                pth4.innerHTML="PO3";
+                pth5.innerHTML="PO4";
+                pth6.innerHTML="PO5";
+                pth7.innerHTML="PO6";
+                pth8.innerHTML="PO7";
+                pth9.innerHTML="PO8";
+                pth10.innerHTML="PO9";
+                pth11.innerHTML="PO10";
+                pth12.innerHTML="PO11";
+                pth13.innerHTML="PO12";
+                pth14.innerHTML="PSO1";
+                pth15.innerHTML="PSO2";
+                mn.append(pd);
+                pd.append(ptb);
+                ptb.append(pth);
+                pth.append(pth1);
+                pth.append(pth2);
+                pth.append(pth3);
+                pth.append(pth4);
+                pth.append(pth5);
+                pth.append(pth6);
+                pth.append(pth7);
+                pth.append(pth8);
+                pth.append(pth9);
+                pth.append(pth10);
+                pth.append(pth11);
+                pth.append(pth12);
+                pth.append(pth13);
+                pth.append(pth14);
+                pth.append(pth15);*/
+            var ptb=document.getElementById('co-psomatrixx');
+
+            for(let k=0;k<n+1;k++){
+                let temp="co"+(k+1);
+                if(k==n){
+                    temp="Course";
+                }
+                var ptr=document.createElement("tr");
+                let ptd1=document.createElement('td');
+                let ptd2=document.createElement('td');
+                let ptd3=document.createElement('td');
+                let ptd4=document.createElement('td');
+                let ptd5=document.createElement('td');
+                let ptd6=document.createElement('td');
+                let ptd7=document.createElement('td');
+                let ptd8=document.createElement('td');
+                let ptd9=document.createElement('td');
+                let ptd10=document.createElement('td');
+                let ptd11=document.createElement('td');
+                let ptd12=document.createElement('td');
+                let ptd13=document.createElement('td');
+                let ptd14=document.createElement('td');
+                let ptd15=document.createElement('td');
+                //let pitd1=document.createElement('input');
+                let pitd2=document.createElement('input');
+                let pitd3=document.createElement('input');
+                let pitd4=document.createElement('input');
+                let pitd5=document.createElement('input');
+                let pitd6=document.createElement('input');
+                let pitd7=document.createElement('input');
+                let pitd8=document.createElement('input');
+                let pitd9=document.createElement('input');
+                let pitd10=document.createElement('input');
+                let pitd11=document.createElement('input');
+                let pitd12=document.createElement('input');
+                let pitd13=document.createElement('input');
+                let pitd14=document.createElement('input');
+                let pitd15=document.createElement('input');
+               // ptd1.setAttribute('value',"CO"+(k+1));
+                ptd1.innerHTML=temp;
+                //pitd1.setAttribute('name',temp+po1);
+                pitd2.setAttribute('name',temp+"po1");
+                pitd3.setAttribute('name',temp+"po2");
+                pitd4.setAttribute('name',temp+"po3");
+                pitd5.setAttribute('name',temp+"po4");
+                pitd6.setAttribute('name',temp+"po5");
+                pitd7.setAttribute('name',temp+"po6");
+                pitd8.setAttribute('name',temp+"po7");
+                pitd9.setAttribute('name',temp+"po8");
+                pitd10.setAttribute('name',temp+"po9");
+                pitd11.setAttribute('name',temp+"po10");
+                pitd12.setAttribute('name',temp+"po11");
+                pitd13.setAttribute('name',temp+"po12");
+                pitd14.setAttribute('name',temp+"pso1");
+                pitd15.setAttribute('name',temp+"pso2");
+                pitd2.setAttribute('class','copso_input');
+                pitd3.setAttribute('class','copso_input');
+                pitd4.setAttribute('class','copso_input');
+                pitd5.setAttribute('class','copso_input');
+                pitd6.setAttribute('class','copso_input');
+                pitd7.setAttribute('class','copso_input');
+                pitd8.setAttribute('class','copso_input');
+                pitd9.setAttribute('class','copso_input');
+                pitd10.setAttribute('class','copso_input');
+                pitd11.setAttribute('class','copso_input');
+                pitd12.setAttribute('class','copso_input');
+                pitd13.setAttribute('class','copso_input');
+                pitd14.setAttribute('class','copso_input');
+                pitd15.setAttribute('class','copso_input');
+                ptb.append(ptr);
+                ptr.append(ptd1);
+                ptr.append(ptd2);
+                ptr.append(ptd3);
+                ptr.append(ptd4);
+                ptr.append(ptd5);
+                ptr.append(ptd6);
+                ptr.append(ptd7);
+                ptr.append(ptd8);
+                ptr.append(ptd9);
+                ptr.append(ptd10);
+                ptr.append(ptd11);
+                ptr.append(ptd12);
+                ptr.append(ptd13);
+                ptr.append(ptd14);
+                ptr.append(ptd15);
+                ptd2.append(pitd2);
+                ptd3.append(pitd3);
+                ptd4.append(pitd4);
+                ptd5.append(pitd5);
+                ptd6.append(pitd6);
+                ptd7.append(pitd7);
+                ptd8.append(pitd8);
+                ptd9.append(pitd9);
+                ptd10.append(pitd10);
+                ptd11.append(pitd11);
+                ptd12.append(pitd12);
+                ptd13.append(pitd13);
+                ptd14.append(pitd14);
+                ptd15.append(pitd15);
+                console.log("k="+k);
+
+            }
+
+            //***************************
+            // adding function to the buttons  
+            //****************************  
+            var buttons=document.getElementsByClassName('adding_button');
+            for (let button of buttons) {
+                button.addEventListener("click", buttonPressed);
+            }
+            var rbuttons=document.getElementsByClassName('remove_button');
+            for (let button of rbuttons) {
+                button.addEventListener("click", rmpressed);
+            }
+            // course end survey
+            var ld=document.getElementById("course_end_survey_questionaire");
+           var ltb=document.createElement("table");
+                ltb.setAttribute('id','courseend_survey');
+                //var mn=document.getElementById('main');
+                mn.append(ld);
+                ld.append(ltb);
+                var lth=document.createElement('thead');
+                var lth1=document.createElement('td');
+                var lth2=document.createElement('td');
+                var lth3=document.createElement('td');
+                lth3.style.width='800px';
+                lth1.innerHTML="SNO";
+                lth2.innerHTML="course outcomes";
+                lth3.innerHTML="question";
+                ltb.setAttribute('border','1');
+                ltb.append(lth);
+                lth.append(lth1);
+                lth.append(lth2);
+                lth.append(lth3);
+            for(var l=0;l<n;l++){
+                    console.log("hello in for loop");
+                    var ltr=document.createElement('tr');
+                    var ltd1=document.createElement('td');
+                    ltd1.innerHTML=(l+1);
+                    var ltd2=document.createElement('td');
+                    var ltd3=document.createElement('td');
+                    //var linp1=document.createElement('input');
+                    var linp2=document.createElement('input');
+                    //linp2.setAttribute('required','');
+                    linp2.style.width="800px";
+                    //let num=i.toString();
+                    //let ces="co"+(l+1);
+                    let qs="qs"+(l+1);
+                    ltd2.innerHTML="CO"+(l+1);
+                    //linp1.setAttribute('name',ces);
+                    linp2.setAttribute('name',qs);
+                    ltb.append(ltr);
+                    ltr.append(ltd1);
+                    ltr.append(ltd2);
+                    ltr.append(ltd3);
+                    //ltd2.append(linp1);
+                    ltd3.append(linp2);
+
+                }
+                // ***************instructor table*******************
+                console.log("*************"+lst_tb);
+                var ins=document.getElementById("details_of_course_instructor");
+                var instb=document.createElement("table");
+                instb.setAttribute('id','instbb');
+                instb.setAttribute('border','1');
+                var insth=document.createElement("thead");
+                var insth1=document.createElement("td");
+                var insth2=document.createElement("td");
+                var insth3=document.createElement("td");
+                var insth4=document.createElement("td");
+                var insth5=document.createElement("td");
+                var insth6=document.createElement("td");
+                var insth7=document.createElement("td");
+
+                mn.append(ins);
+                ins.append(instb);
+                instb.append(insth);
+                insth1.innerHTML="Sno";
+                insth2.innerHTML="Name of the course Instructor";
+                insth3.innerHTML="Designation";
+                insth4.innerHTML="Year";
+                insth5.innerHTML="Section";
+                insth6.innerHTML="Contact no";
+                insth7.innerHTML="E-mail";
+
+
+                insth.append(insth1);
+                insth.append(insth2);
+                insth.append(insth3);
+                insth.append(insth4);
+                insth.append(insth5);
+                insth.append(insth6);
+                insth.append(insth7);
+
+                var instr=document.createElement("tr");
+                var instd1=document.createElement("td");
+                var instd2=document.createElement("td");
+                var instd3=document.createElement("td");
+                var instd4=document.createElement("td");
+                var instd5=document.createElement("td");
+                var instd6=document.createElement("td");
+                var instd7=document.createElement("td");
+                instd1.innerHTML="1";
+                var insinp1=document.createElement('input');
+                var insinp2=document.createElement('input');
+                var insinp3=document.createElement('input');
+                var insinp4=document.createElement('input');
+                var insinp5=document.createElement('input');
+                var insinp6=document.createElement('input');
+                // insinp1.setAttribute('required','');
+                // insinp2.setAttribute('required','');
+                // insinp3.setAttribute('required','');
+                // insinp4.setAttribute('required','');
+                // insinp5.setAttribute('required','');
+                // insinp6.setAttribute('required','');
+                insinp1.style.width='300px';
+                insinp1.style.height='40px';
+                insinp2.style.width='120px';
+                insinp2.style.height='40px';
+                insinp3.style.width='120px';
+                insinp3.style.height='40px';
+                insinp4.style.width='120px';
+                insinp4.style.height='40px';
+                insinp5.style.width='120px';
+                insinp5.style.height='40px';
+                insinp6.style.width='120px';
+                insinp6.style.height='40px';
+                insinp1.setAttribute('name','insname');
+                insinp2.setAttribute('name','insdes');
+                insinp3.setAttribute('name','insyear');
+                insinp4.setAttribute('name','inssec');
+                insinp5.setAttribute('name','inscno');
+                insinp6.setAttribute('name','insemail');
+                instb.append(instr);
+                instr.append(instd1);
+                instr.append(instd1);
+                instr.append(instd2);
+                instr.append(instd3);
+                instr.append(instd4);
+                instr.append(instd5);
+                instr.append(instd6);
+                instr.append(instd7);
+                instd2.append(insinp1);
+                instd3.append(insinp2);
+                instd4.append(insinp3);
+                instd5.append(insinp4);
+                instd6.append(insinp5);
+                instd7.append(insinp6);
+                
+            }
+        
+            var count_textbook=1;
+            var tb=['rmtb1','rmtb2','rmtb3','rmtb4','rmtb5','rmtb6','rmtb7','rmtb8','rmtb9','rmtb10','rmtb11','rmtb12','rmtb13','rmtb14','rmtb15','rmtb16','rmtb17','rmtb18','rmtb19','rmtb20','rmtb21','rmtb22','rmtb23','rmtb24','rmtb25','rmtb26','rmtb27','rmtb28','rmtb29','rmtb30'];
+var list_textbook=['tb1','tb2','tb3','tb4','tb5','tb6','tb7','tb8','tb9','tb10','tb11','tb12','tb13','tb14','tb15','tb16','tb17','tb18','tb19','tb20','tb21','tb22','tb23','tb24','tb25','tb26','tb27','tb28','tb29','tb30'];
+function rmtb(){
+    if(count_textbook==1){
+        alert('its mandatory');
+    }
+    else{
+        var rm=document.getElementById(tb[count_textbook-1]);
+        rm.remove();
+        count_textbook=count_textbook-1;
+
+        var cptb=document.getElementById("copytb");
+        
+        
+        
+        cptb.setAttribute("value",count_textbook);
+        cptb.setAttribute("placeholder",count_textbook);
+    }
+}
+function textbook(){
+    if(count_textbook==30){
+        alert('only ten 30 textbooks');
+    }
+    else{
+        count_textbook+=1;
+        var copytb=document.getElementById('copytb');
+        copytb.setAttribute('value',count_textbook);
+        copytb.setAttribute('placeholder',count_textbook);
+        var tab=document.getElementById("textbook_table");
+        var row=document.createElement('tr');
+        var td1=document.createElement('td');
+        var td2=document.createElement('td');
+        var inp=document.createElement('input');
+        td1.setAttribute('value',count_textbook);
+        td1.innerHTML=count_textbook;
+        row.setAttribute('id',tb[count_textbook-1]);
+        inp.setAttribute('type','text');
+        inp.setAttribute('name',list_textbook[count_textbook-1]);
+        //inp.setAttribute('required','');
+        inp.setAttribute('class','textbooks_inputdiv');
+        tab.append(row);
+        row.append(td1);
+        row.append(td2);
+        td2.append(inp);
+
+    }
+}
+var count_referencebook=1;
+var rb=['rmrb1','rmrb2','rmrb3','rmrb4','rmrb5','rmrb6','rmrb7','rmrb8','rmrb9','rmrb10','rmrb11','rmrb12','rmrb13','rmrb14','rmrb15','rmrb16','rmrb17','rmrb18','rmrb19','rmrb20','rmrb21','rmrb22','rmrb23','rmrb24','rmrb25','rmrb26','rmrb27','rmrb28','rmrb29','rmrb30'];
+var list_referencebook=['rb1','rb2','rb3','rb4','rb5','rb6','rb7','rb8','rb9','rb10','rb11','rb12','rb13','rb14','rb15','rb16','rb17','rb18','rb19','rb20','rb21','rb22','rb23','rb24','rb25','rb26','rb27','rb28','rb29','rb30'];
+function rmrb(){
+    if(count_referencebook==1){
+        alert('its mandatory');
+    }
+    else{
+        var rm=document.getElementById(rb[count_referencebook-1]);
+        var cptb=document.getElementById("copyrb");
+        console.log("in remove**********************")
+        console.log(cptb);
+        
+        rm.remove();
+        count_referencebook=count_referencebook-1;
+        cptb.setAttribute("value",count_referencebook);
+        cptb.setAttribute("placeholder",count_referencebook);
+    }
+}
+
+function referencebook(){
+    if(count_referencebook==30){
+        alert('only ten 10 referencebooks');
+    }
+    else{
+        count_referencebook+=1;
+        var copyrb=document.getElementById('copyrb');
+        copyrb.setAttribute('value',count_referencebook);
+        copyrb.setAttribute('placeholder',count_referencebook);
+        var tab=document.getElementById("referencebook_table");
+        var row=document.createElement('tr');
+        var td1=document.createElement('td');
+        var td2=document.createElement('td');
+        var inp=document.createElement('input');
+        row.setAttribute('id',rb[count_referencebook-1]);
+        td1.setAttribute('value',count_referencebook);
+        td1.innerHTML=count_referencebook;
+        inp.setAttribute('type','text');
+        inp.setAttribute('name',list_referencebook[count_referencebook-1]);
+        inp.setAttribute('class','referencebook_inputdiv');
+        //inp.setAttribute('required','');
+        tab.append(row);
+        row.append(td1);
+        row.append(td2);
+        td2.append(inp);
+
+    }
+}
+            
+        </script>
+        <center><h1>LessonPlan</h1></center>
+        {% for message in messages %}
+            <center><h3 class="msg">{{message}}<span>*</span></h3></center>
+            {% endfor %}
+            
+            
+            
+        <form action="storeinput" method="POST">
+
+            {% csrf_token %}
+            <div>
+                <center>
+                <h1 id="mainhead">Enter number of CO's:</h1>
+                <input type="text" id="numco" name="numco" value="1">
+                <div onclick="numco()" id="submits">submit</div>
+            </center>
+            </div>
+            <div id="maindiv" >
+        <div id="main">
+            <div id="lesson_plan_details">
+                <table width="90%" >
+                    <tr>
+                        <td><h3>Batch:<span>*</span></h3></td>
+                        <td class="inputdiv_space"><input type="text" name="batch" id="batch" class="lesson_plan_details_inputdiv" required></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><h3>AcademicYear:<span>*</span></h3></td>
+                        <td class="inputdiv_space"><input type="text" name="academicyear" id="academicyear" class="lesson_plan_details_inputdiv" required></td>
+                        <td><h3>Programme:<span>*</span></h3></td>
+                        <td><input type="text" name="programme" id="programme" class="lesson_plan_details_inputdiv" required></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Semester:<span>*</span></h3></td>
+                        <td class="inputdiv_space"><input type="text" name="semester" id="semester" class="lesson_plan_details_inputdiv" list="sem" required>
+                        <datalist id="sem">
+                            <option value="I Sem"></option>
+                            <option value="II Sem"></option>
+                            <option value="III Sem"></option>
+                            <option value="IV Sem"></option>
+                            <option value="V Sem"></option>
+                            <option value="VI Sem"></option>
+
+                        </datalist>
+                        </td>
+                        
+                        <td><h3>Section:<span>*</span></h3></td>
+                        <td><input type="text" name="section" id="section" class="lesson_plan_details_inputdiv" list="sec">
+                            <datalist id="sec">
+                                <option value="CSE"></option>
+                                <option value="CST"></option>
+                                <option value="CSE(AI)"></option>
+                                <option value="CSE(AIML)"></option>
+                                <option value="EEE"></option>
+                                <option value="ECT"></option>
+                                <option value="ECE"></option>
+                                <option value="CIVIL"></option>
+                                <option value="ME"></option>
+                            </datalist>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h3>Name of the course:<span>*</span></h3></td>
+                        <td class="inputdiv_space"><input type="text" name="nameofthecourse" id="nameofthecourse" class="lesson_plan_details_inputdiv" required></td>
+                        <td><h3>Course Code:<span>*</span></h3></td>
+                        <td><input type="text" name="coursecode" id="coursecode" class="lesson_plan_details_inputdiv" required></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="courseoutcomes">
+                <h1>Course Outcomes</h1>
+                <table border="1" width="90%" id="coursetable">
+                    <thead>
+                        <td width="10%"><h3>CO<span>*</span></h3></td>
+                        <td width="70%"><h3>Course Outcomes<span>*</span></h3></td>
+                        <td width="10%"><h3>knowledge Level<span>*</span></h3></td>
+                    </thead>
+                </table>
+            </div>
+            <div id="textbooks">
+                <input type="text" name="copytexbook" value="1" class="copy" placeholder="1" id="copytb">
+                <h1>TextBooks</h1>
+                <table border="1"  width="90%" id="textbook_table">
+                    <thead>
+                        <td width="8%"><h3>S.no</h3></td>
+                        <td width="82%"><h3>Name & details of the textbook<span>*</span></h3></td>
+                    </thead>
+                    <tr>
+                        <td >1</td>
+                        <td><input type="text" class="textbooks_inputdiv" name="tb1"></td>
+                    </tr>
+                </table>
+                <div class="adding_button" onclick="textbook()"><center>+ADD</center></div>
+                <div onclick="rmtb()" class="remove_button"><center> REMOVE</center></div>
+            </div>
+            <div id="referencebooks">
+                <input type="text" name="copyreferencebook" value="1" class="copy" placeholder="1" id="copyrb">
+                <h1>Reference Books</h1>
+                <table border="1"  width="90%" id="referencebook_table">
+                    <thead>
+                        <td width="8%"><h3>S.no</h3></td>
+                        <td width="82%"><h3>Name & details of the ReferenceBook<span>*</span></h3></td>
+                    </thead>
+                    <tr>
+                        <td >1</td>
+                        <td><input type="text" class="referencebook_inputdiv" name="rb1" ></td>
+                    </tr>
+                </table>
+                <div class="adding_button" onclick="referencebook()"><center>+ADD</center></div>
+                <div onclick="rmrb()" class="remove_button"><center> REMOVE</center></div>
+            </div>
+            <div id="targetproficiency">
+                <center>
+                    <h1>Tareget proficiency and Attainment Levels(for each course):</h1>
+                </center>
+            </div>
+
+            <div class="dytables">
+               <center><h1>lecture plan</h1></center> 
+            </div>
+            <div id="lectureplan"></div>
+            <div id="co-psomatrix">
+                <h1>Co-Po&CO-PSO Matrix</h1>
+                <table border="1" width="90%" id="co-psomatrixx">
+                    <thead>
+                        <td width="10%" height="50px">Cos/Pos,Psos</td>
+                        <td width="10%" height="50px">PO1<span>*</span></td>
+                        <td width="10%" height="50px">PO2<span>*</span></td>
+                        <td width="10%" height="50px">PO3<span>*</span></td>
+                        <td width="10%" height="50px">PO4<span>*</span></td>
+                        <td width="10%" height="50px">PO5<span>*</span></td>
+                        <td width="10%" height="50px">PO6</td>
+                        <td width="10%" height="50px">PO7</td>
+                        <td width="10%" height="50px">PO8</td>
+                        <td width="10%" height="50px">PO9</td>
+                        <td width="10%" height="50px">PO10</td>
+                        <td width="10%" height="50px">PO11</td>
+                        <td width="10%" height="50px">PO12<span>*</span></td>
+                        <td width="10%" height="50px">psos1<span>*</span></td>
+                        <td width="10%" height="50px">psos2</td>
+                    </thead>
+                </table>
+            </div>
+            <div id="course_end_survey_questionaire">
+                <h1>Course End Survey questionaire</h1>
+            </div>
+            <div id="details_of_course_instructor">
+                <h1>Details of Course Instructor</h1>
+            </div>
+            
+        </div>
+        <div>
+            <center><input type="submit" name="submit" id="submitl"></center> 
+         </div>
+    </form>
+    
+
+</div>
+    </body>
+</html>

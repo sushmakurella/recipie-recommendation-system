@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views,lessonplan
 
 urlpatterns = [
     # path('',views.home,name='home'),
@@ -25,4 +25,14 @@ urlpatterns = [
     path('endsurveyquesnr',views.endsurveyquesnr,name='endsurveyquesnr'),
     path('test',views.test,name='test'),
     path('test1',views.test1,name='test1'),
+    #***************************New**********
+    path('login',lessonplan.login,name='login'),
+    path('lessonplan/inputform',lessonplan.inputform,name='inputform'),
+    path('lessonplan/storeinput',lessonplan.storeinput,name='storeinput'),
+    path('lessonplan/inputcoursecode',lessonplan.inputcoursecode,name='inputcoursecode'),
+    path('lessonplan/updatecoursecode',lessonplan.updatecoursecode,name='updatecoursecode'),
+    path('lessonplan/updateplan',lessonplan.updateplan,name='updateplan'),
+    path('lessonplan/updateinput',lessonplan.updateinput,name='storeinput'),
+    path('lessonplan/viewplan',lessonplan.viewplan,name='viewplan'),
+    path('lessonplan/<str:name>',lessonplan.mainpage,name='mainpage'),
 ]

@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Open+Sans:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <style>
+            body{
+                /*background: linear-gradient(25deg, #270082,#E384FF,#FFA3FD);*/
+                background: linear-gradient(105deg,#30E3DF,#27cfc9,#8E05C2,#610094);
+            }
+            .maindiv{
+                background:white ;
+                position: relative;
+                width: 450;
+                height: 520px;
+                margin:auto;
+                margin-top:100px;
+                text-align: center;
+               /* border-radius: 15px;*/
+            }
+            .inp{
+                width: 300px;
+                height: 50px;
+                position: relative;
+                /*margin-left: 70px;
+                margin-right: auto;*/
+                /*margin-top: 30px;
+                margin-bottom: 30px;*/
+                /*border-radius: 15px;*/
+                margin-bottom: 20px;
+                color:grey;
+                /*background: rgb(254, 252, 252);*/
+                border-style: groove;
+                border-color: #E384FF;
+                border-width: 2px;
+                font-size: 25px;
+                font-weight: 100;
+                /*padding: 10px;*/
+            }
+            .submit{
+                /*background:linear-gradient(25deg, #865DFF,#E384FF,#FFA3FD) ;
+                margin-top: 100px;*/
+                background: linear-gradient(105deg,#610094,#8E05C2,#27cfc9,#30E3DF);
+                border-style: none;
+               /* border-radius: 15px;*/
+                color: white;
+                font-size: 25px;
+                font-weight: 700;
+                width: 300px;
+                height: 40px;
+                position: relative;
+                /*margin-left: 120px;
+                margin-right: auto;*/
+                margin-top: 30px;
+                margin-bottom: 30px;
+                font-family: 'Poppins', sans-serif;
+                
+                /*border-radius: 15px;*/
+            }
+            .innerdiv{
+                padding-top: 10px;
+            }
+            h5{
+                color: red;
+                position:absolute;
+                padding-top: 60px;
+                padding-left: 70px;
+                font-size: 20;
+                font-weight: 300;
+                font-family: 'Poppins', sans-serif;
+            }
+            h2{
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                font-size: 40px;
+                font-weight: 800;
+                margin-top: 30px;
+                padding-top: 30px;
+            }
+            h3{
+                font-family: 'Poppins', sans-serif;
+                padding-left: 80px;
+                text-align: left;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <form action="login" method="POST">
+            {% csrf_token %}
+            <div class="maindiv">
+                {% for message in messages %}
+            <h5>*{{message}}</h5>
+            {% endfor %}
+                <h2>Login</h2>
+                <div class="innerdiv">
+                <div><h3>UserName</h3></div>
+                <br>
+                <input type="text" name="name"  class="inp" required>
+                <br>
+                <div><h3>Password</h3></div>
+                <br>
+                <input type="password" name="passwd"  class="inp" required>
+                <br>
+                </div>
+                <input type="submit" name="submit" class="submit">
+            </div>
+        </form>
+    </body>
+</html>
