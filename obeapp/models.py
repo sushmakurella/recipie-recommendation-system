@@ -10,10 +10,12 @@ class Userform(models.Model):
     password= models.CharField(max_length=100)
     
 class Regulation(models.Model):
+    Sno= models.IntegerField()
     Regulation= models.CharField(max_length=100)
     startyear= models.IntegerField()
     endyear= models.IntegerField()
 class Courses(models.Model):
+    Sno= models.IntegerField()
     Coursenam= models.CharField(max_length=100)
     Coursecode= models.CharField(max_length=100)
     

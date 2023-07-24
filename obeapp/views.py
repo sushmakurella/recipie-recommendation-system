@@ -10,6 +10,10 @@ def admin_dashboard(request):
     return render(request, 'obeapp/admin/admin_dashboard.html')
 def Regulations(request):
     return render(request, 'obeapp/admin/regulations.html')
+def Courses(request):
+    return render(request, 'obeapp/admin/Courses.html')
+def Manage_Faculty(request):
+    return render(request, 'obeapp/admin/Manage_Faculty.html')
 def admin_hods_dashboard_sam(request):
     return render(request, 'obeapp/admin_hods_dashboard_sam.html')
 def faculty_dashboard_sam(request):
