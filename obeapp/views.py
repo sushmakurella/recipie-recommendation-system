@@ -9,8 +9,8 @@ from django.apps import apps
 from django.contrib import admin
 from dynamic_models.models import ModelSchema, FieldSchema
 from django.shortcuts import render, redirect
-# from .forms import AdminForm
-# from django.contrib.auth.models import dynamic_models_book
+#from .forms import AdminForm
+#from django.contrib.auth.models import dynamic_models_book
 from django.contrib.auth.decorators import login_required
 from .forms import NewUserForm
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
@@ -20,17 +20,31 @@ from bs4 import BeautifulSoup
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from datetime import datetime
-#admin.site.register(ModelSchema)
-#admin.site.register(FieldSchema)
+# admin.site.register(ModelSchema)
+# admin.site.register(FieldSchema)
+# import json
+# from django.http import JsonResponse
+
 import pandas as pd
 import math
 import numpy as np
 from .models import *
+from .forms import *
+
+def home(request):
+    return render(request, 'obeapp/obapp/home.html')
+
 # @login_required(login_url='/admin_login')
 def admin_dashboard(request):
     return render(request, 'obeapp/admin/admin_dashboard.html')
+def faculty_dashboard(request):
+    return render(request, 'obeapp/faculty/faculty_dashboard.html')
+def department_dashboard(request):
+    return render(request, 'obeapp/faculty/department_admin.html')
 def Regulations(request):
-    return render(request, 'obeapp/admin/regulations.html')
+    print("regulation")
+    reg = Regulation.objects.all()
+    return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
 def Courses(request):
     return render(request, 'obeapp/admin/Courses.html')
 def Manage_Faculty(request):
@@ -42,30 +56,78 @@ def faculty_dashboard_sam(request):
 def index(request):
     return render(request, 'obeapp/land.html')
 
-def lessonplans(request):
-    return render(request, 'obeapp/faculty/lessonplans.html')
-def courses(request):
-    return render(request, 'obeapp/faculty/courses.html')
-def textref(request):
-    return render(request, 'obeapp/faculty/textref.html')
-def profmatrix(request):
-    return render(request, 'obeapp/faculty/profmatrix.html')
-def lectureplan(request):
-    return render(request, 'obeapp/faculty/lectureplan.html')
-def copsomatrix(request):
-    return render(request, 'obeapp/faculty/copsomatrix.html')
-def endsurveyquesnr(request):
-    return render(request, 'obeapp/faculty/endsurveyquesnr.html')
-def test(request):
-    return render(request, 'obeapp/faculty/test.html')
 def test1(request):
     return render(request, 'obeapp/frontend/test1.html')
 
+def add_regulation(request):
+    reg = Regulation.objects.all()
+    print("@@@@@@@@@@@@@@@")
+    if request.method == "POST":
+        regulation = request.POST['regulation']
+        batch = request.POST['batch']
+        print(regulation)
+        if(len(Regulation.objects.filter(Regulation=regulation)) == 0):  
+            print("###########")
+            Reg = Regulation()
+            Reg.Sno = len(reg)+1
+            Reg.Regulation = regulation
+            Reg.batch = batch
+            Reg.save()
+            reg = Regulation.objects.all()
+            return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
+        else:
+            print("$$$$$$$$$$$$$$$")
+            messages.error(request,'Regulation already exists')
+    return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
+    
+def user_login(request):
+    # if request.user.is_authenticated:
+    #     return redirect(admin_dashboard)
+    if request.user.is_authenticated:
+        return redirect(faculty_dashboard_sam)
+    if request.method == "POST":
+        uname = request.POST['unamef']
+        pswd = request.POST['pswdf']
+        # 
+        if CustomUser.objects.filter(username=uname).exists():
+                   obj=CustomUser.objects.get(username=uname)
+                   if(obj.password==pswd):
+                        login(request, obj)
+                        return redirect('faculty_dashboard_sam')
+                   else:
+                        print("error")
+                        messages.error(request,'invalid passwod please try again')
+                        return render(request, 'obeapp/land.html')
+
+        else:
+            print("in else of faculty login*******")
+            return render(request, 'obeapp/land.html')
+                    #else:
+                #form.add_error(None, 'Invalid credentials. Please try again.')
+    else:
+        #form = LoginForm()
+     return render(request, 'obeapp/land.html')
+
+def user_logout(request):
+    logout(request)
+    return redirect(user_login)  # Replace 'login' with the name of your login page URL pattern
+
+def user_registration(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')  # Redirect to login page after successful registration
+
+    else:
+        form = RegistrationForm()
+
+    return render(request, 'obeapp/faculty/faculty_registration.html', {'form': form})
 
 
 def admin_login(request):
     if request.user.is_authenticated:
-        return redirect(admin_hods_dashboard_sam)
+        return redirect(admin_dashboard)
     if request.method == "POST":
         uname = request.POST['uname']
         pswd = request.POST['pswd']
@@ -73,7 +135,7 @@ def admin_login(request):
         if user and user.is_superuser:
             login(request, user)
             request.session['user_name'] = uname
-            return redirect(admin_hods_dashboard_sam)
+            return redirect(admin_dashboard)
         else:
             return render(request, 'obeapp/admin_login.html', {'error': True})
     return render(request, 'obeapp/admin_login.html')
@@ -109,208 +171,6 @@ def logout_request(request):
     messages.info(request, "You have successfully logged out.")
     return redirect(login_request)
 
-
-
-
-# from .forms import PersonForm
-# from .models import Person
-# from django import forms
-
-# def editable_table(request):
-#     PersonFormSet = forms.formset_factory(PersonForm, extra=1)
-
-#     if request.method == 'POST':
-#         formset = PersonFormSet(request.POST, prefix='person')
-#         if formset.is_valid():
-#             for form in formset:
-#                 name = form.cleaned_data['name']
-#                 age = form.cleaned_data['age']
-#                 email = form.cleaned_data['email']
-#                 person, created = Person.objects.get_or_create(name=name, age=age, email=email)
-#             return redirect('editable_table')  # Redirect to the same page after saving
-#     else:
-#         formset = PersonFormSet(prefix='person', queryset=Person.objects.none())
-
-    
-#     return render(request, 'obeapp/editable_table.html', {'formset': formset})
-
-
-# from django.db import models
-# # from django.apps import apps
-# # from dynamic_models.models import ModelSchema, FieldSchema
-# from django.shortcuts import render, redirect
-# # from .forms import AdminForm
-# # # from django.contrib.auth.models import dynamic_models_book
-# from django.contrib.auth.decorators import login_required
-# from .forms import NewUserForm
-# from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-# from django.contrib.auth import login, authenticate, logout
-# # import requests
-# # from bs4 import BeautifulSoup
-# from django.contrib import messages
-# from django.contrib.auth.forms import AuthenticationForm
-# # from datetime import datetime
-
-# # print(datetime.now)
-# # headers = {
-# #     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
-# # # Create your views here.
-
-
-# # def home(request):
-# #     return render(request, 'obeapp/home.html')
-
-
-# # @login_required(login_url='/adminlog')
-# # def index(request):
-# #     return render(request, 'obeapp/index.html')
-# # def admin_login(request):
-# #     return render(request, 'obeapp/admin_login.html')
-# @login_required(login_url='/admin_login')
-# def admin_dashboard(request):
-#     return render(request, 'obeapp/admin_hods_dashboard.html')
-# def faculty_dashboard(request):
-#     return render(request, 'obeapp/faculty/faculty_dashboard.html')
-# def lessonplans(request):
-#     return render(request, 'obeapp/faculty/lessonplans.html')
-
-
-
-# def admin_login(request):
-#     if request.user.is_authenticated:
-#         return redirect(admin_dashboard)
-#     if request.method == "POST":
-#         uname = request.POST['uname']
-#         pswd = request.POST['pswd']
-#         user = authenticate(request, username=uname, password=pswd)
-#         if user and user.is_superuser:
-#             auth_login(request, user)
-#             request.session['user_name'] = uname
-#             return redirect(admin_dashboard)
-#         else:
-#             return render(request, 'obeapp/admin_login.html', {'error': True})
-#     return render(request, 'obeapp/admin_login.html',)
-
-
-# def admin_logout(request):
-#     auth_logout(request)
-#     return redirect(login_request)
-
-
-# def faculty_registration(request):
-#     if request.method == 'POST':
-#         form = NewUserForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('admin_login')
-#     else:
-#         print("Please enter")
-#     form = NewUserForm()
-#         # placeholder = ["Username", "Email", "Designation",
-#         #            "Date Of Joinning", "Biometric Id", "Password","Confirm"]
-#     return render(request=request, template_name="obeapp/faculty_registration.html", context={"form":form})
-#     # if request.method == "POST":
-#     #     form = NewUserForm(request.POST)
-#     #     if form.is_valid():
-#     #         user = form.save()
-#     #         messages.success(request, "Registration successful.")
-#     #         print("Registration successful.")
-#     #         return redirect(admin_login)
-#     #     messages.error(
-#     #         request, "Unsuccessful registration. Invalid information.")
-#     #     print("Unsuccessful registration. Invalid information.")
-#     # form = NewUserForm()
-#     # placeholder = ["Username", "Email", "Designation",
-#     #                "Date Of Joinning", "Biometric Id", "Password"]
-#     # # placeholder = {"username":"Username", "email":"Email","Designation":"Designation","DateofJoinning":"Date Of Joinning","Biometricid":"Biometric Id","password":"Password"}
-#     # return render(request=request, template_name="obeapp/faculty_registration.html", context={"sample": zip(form, placeholder)})
-# # def faculty_registration(request):
-# #     if request.method == "POST":
-# #         form = NewUserForm(request.POST)
-# #         if form.is_valid():
-# #             user = form.save()
-# #             messages.success(request, "Registration successful.")
-# #             print("Registration successful.")
-# #             return redirect(admin_login)
-# #         messages.error(
-# #             request, "Unsuccessful registration. Invalid information.")
-# #         print("Unsuccessful registration. Invalid information.")
-# #     form = NewUserForm()
-# #     placeholder = ["Username", "Email", "Designation",
-# #                    "Date Of Joinning", "Biometric Id", "Password"]
-# #     # placeholder = {"username":"Username", "email":"Email","Designation":"Designation","DateofJoinning":"Date Of Joinning","Biometricid":"Biometric Id","password":"Password"}
-# #     return render(request=request, template_name="obeapp/faculty_registration.html", context={"sample": zip(form, placeholder)})
-
-
-# def login_request(request):
-#     global us
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-#         user = authenticate(request, username=username, password=password)
-#         if user is not None:
-#             login(request, user)
-#             return redirect('home')
-#         else:
-#             return render(request, 'obeapp/index.html', {'error': 'Invalid credentials'})
-#     return render(request=request, template_name="obeapp/index.html")
-#     #     form = AuthenticationForm(request, data=request.POST)
-#     #     if form.is_valid():
-#     #         username = form.cleaned_data.get('username')
-#     #         password = form.cleaned_data.get('password')
-#     #         user = authenticate(username=username, password=password)
-#     #         if user is not None:
-#     #             login(request, user)
-#     #             # us=username
-#     #             request.session['us'] = username
-#     #             messages.info(request, "You are now logged in as"+username+".")
-#     #             print("You are now logged in as"+username+".")
-#     #             return redirect(faculty_dashboard)
-
-#     #         else:
-#     #             print("valid")
-#     #             messages.error(request, "Invalid username or password.")
-#     #             print("Invalid username or password.")
-#     #     else:
-#     #         print("invalid")
-#     #         messages.error(request, "Invalid username or password.")
-#     #         print("Invalid username or password.")
-#     # form = AuthenticationForm()
-#     # return render(request=request, template_name="obeapp/index.html", context={"login_form": form})
-# # def login_request(request):
-# #     global us
-# #     if request.method == "POST":
-# #         form = AuthenticationForm(request, data=request.POST)
-# #         if form.is_valid():
-# #             username = form.cleaned_data.get('username')
-# #             password = form.cleaned_data.get('password')
-# #             user = authenticate(username=username, password=password)
-# #             if user is not None:
-# #                 login(request, user)
-# #                 # us=username
-# #                 request.session['us'] = username
-# #                 messages.info(request, "You are now logged in as"+username+".")
-# #                 print("You are now logged in as"+username+".")
-# #                 return redirect(faculty_dashboard)
-
-# #             else:
-# #                 print("valid")
-# #                 messages.error(request, "Invalid username or password.")
-# #                 print("Invalid username or password.")
-# #         else:
-# #             print("invalid")
-# #             messages.error(request, "Invalid username or password.")
-# #             print("Invalid username or password.")
-# #     form = AuthenticationForm()
-# #     return render(request=request, template_name="obeapp/index.html", context={"login_form": form})
-
-
-# def logout_request(request):
-#     logout(request)
-#     messages.info(request, "You have successfully logged out.")
-#     return redirect(login_request)
-
-#******************New*********************
 def mid1_results_table(reg):
     l1 = ['branch', 'coursecode', 'acyear', 'sem']
     book_schema = ModelSchema.objects.create(name=str(reg) + 'mid1')
@@ -389,6 +249,43 @@ def mid2_results_table(reg):
             c1 += 1
     Book = book_schema.as_model()
 
+def sem_results_table(reg):
+    l1 = ['branch', 'coursecode', 'academicyear', 'sem']
+    book_schema = ModelSchema.objects.create(name=str(reg) + 'sem')
+    c = 0
+    for i in range(4):
+        l1[i] = FieldSchema.objects.create(
+            name=l1[i],
+            data_type='character',
+            model_schema=book_schema,
+            max_length=255,
+        )
+    exp = ['a' + str(i) for i in range(45)]
+    c = 0
+    for i in range(1, 6):
+        for k in ['a', 'b', 'c']:
+            for j in ['attained', 'attempted', 'percentage']:
+                # a = 'co'+i+k+'_'+j
+                exp[c] = FieldSchema.objects.create(
+                    name='co' + str(i) + k + '_' + j,
+                    data_type='integer' if j != 'percentage' else 'float',
+                    model_schema=book_schema,
+                    max_length=255,
+                )
+                c += 1
+    exp2 = ['a' + str(i) for i in range(10)]
+    c1 = 0
+    for i in ['co1', 'co2', 'co3', 'co4', 'co5']:
+        for j in ['attainment_percentage', 'attainment_level']:
+            # b = i+'_'+j
+            exp2[c1] = FieldSchema.objects.create(
+                name=i + '_' + j,
+                data_type='integer' if j != 'attainment_percentage' else 'float',
+                model_schema=book_schema,
+                max_length=255,
+            )
+            c1 += 1
+    Book = book_schema.as_model()
 
 def mid1_marks_table(reg):
     book_schema = ModelSchema.objects.create(name=str(reg) + 'mid1_marks')
@@ -497,6 +394,56 @@ def mid2_marks_table(reg):
 
     Book = book_schema.as_model()
 
+def sem_marks_table(reg):
+    book_schema = ModelSchema.objects.create(name=str(reg) + 'sem_marks')
+    q = 'co'
+    alp = ['a', 'b', 'c']
+    # # add fields to the schema
+    lst = ['a' + str(i) for i in range(45)]
+    c = 0
+    '''rno = FieldSchema.objects.create(
+                name='Roll_no',
+                data_type='character',
+                model_schema=book_schema,
+                max_length=255,
+            )'''
+    for i in range(5):
+        for j in alp:
+            lst[c] = FieldSchema.objects.create(
+                name=q + str(i + 1) + '_' + j,
+                data_type='integer',
+                model_schema=book_schema,
+                max_length=255,
+            )
+            c += 1
+    alpp = ['max']
+    for i in range(5):
+        for k in alp:
+            for j in alpp:
+                lst[c] = FieldSchema.objects.create(
+                    name=q + str(i + 1) + '_' + k + '_' + j,
+                    data_type='integer',
+                    model_schema=book_schema,
+                    max_length=255,
+                )
+                c += 1
+    '''Total = FieldSchema.objects.create(
+                name='Total',
+                data_type='integer',
+                model_schema=book_schema,
+                max_length=255,
+            )'''
+    lst1 = ['branch', 'course_code', 'academic_year', 'sem']
+    lst2 = ['branch', 'course_code', 'academic_year', 'sem']
+    for i in range(4):
+        lst1[i] = FieldSchema.objects.create(
+            name=lst2[i],
+            data_type='character',
+            model_schema=book_schema,
+            max_length=255,
+        )
+
+    Book = book_schema.as_model()
 
 def mid1_marks_insert(name):
     book_schema = ModelSchema.objects.get(name='v20mid1_marks')
@@ -555,6 +502,33 @@ def mid2_marks_insert(name):
                                 co4_c_max=m[7], co5_a_max=m[8], co5_b_max=m[9], co5_c_max=m[10])
         f.save()
 
+def sem_marks_insert(regname):
+    book_schema = ModelSchema.objects.get(name='v20sem_marks')
+    Book = book_schema.as_model()
+    df2 = pd.read_excel(regname)
+    maxmarks = list(df2.iloc[3])
+    df = pd.read_excel(regname, skiprows=[0, 1, 2, 3, 4])
+    df.columns = ['sn', 'rno', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14',
+                  'q15']
+    df = df.fillna(-1)
+    df = df.replace('A', -2)
+    branch = 'EEE'
+    course_code = 'V20EET02'
+    academic_year = '2021-22'
+    sem = 'IV'
+    for i in df.index:
+        f = Book.objects.create(co1_a=df['q1'][i], co1_b=df['q2'][i], co1_c=df['q3'][i], co2_a=df['q4'][i],
+                                co2_b=df['q5'][i], co2_c=df['q6'][i], co3_a=df['q7'][i], co3_b=df['q8'][i],
+                                co3_c=df['q9'][i], co4_a=df['q10'][i], co4_b=df['q11'][i], co4_c=df['q12'][i],
+                                co5_a=df['q13'][i], co5_b=df['q14'][i], co5_c=df['q15'][i]
+                                , branch=branch, course_code=course_code, academic_year=academic_year, sem=sem,
+                                co1_a_max=maxmarks[2], co1_b_max=maxmarks[3], co1_c_max=maxmarks[4],
+                                co2_a_max=maxmarks[5], co2_b_max=maxmarks[6], co2_c_max=maxmarks[7],
+                                co3_a_max=maxmarks[8], co3_b_max=maxmarks[9], co3_c_max=maxmarks[10]
+                                , co4_a_max=maxmarks[11], co4_b_max=maxmarks[12], co4_c_max=maxmarks[13],
+                                co5_a_max=maxmarks[14], co5_b_max=maxmarks[15], co5_c_max=maxmarks[16])
+        f.save()
+    calculate_sem_results(regname, academic_year, course_code, branch)
 
 def calculate_mid1_results(regname):
     book_schema = ModelSchema.objects.get(name=str(regname) + 'mid1_marks')
@@ -655,141 +629,6 @@ def calculate_mid2_results(regname):
                         co3_atnper=attainper[0], co3_atnlvl=attainlvl[0], co4_atnper=attainper[1],
                         co4_atnlvl=attainlvl[1], co5_atnper=attainper[2], co5_atnlvl=attainlvl[2])
 
-
-def course_marks(request):
-    return render(request, 'storeinput.html')
-
-
-def storeinput(request):
-    if request.method == 'POST':
-        nm = request.FILES['file']
-        mid1_marks_insert(nm)
-        mid2_marks_insert(nm)
-    else:
-        return redirect('login')
-    return render(request, 'storeinput.html')
-
-
-def sem_results_table(reg):
-    l1 = ['branch', 'coursecode', 'academicyear', 'sem']
-    book_schema = ModelSchema.objects.create(name=str(reg) + 'sem')
-    c = 0
-    for i in range(4):
-        l1[i] = FieldSchema.objects.create(
-            name=l1[i],
-            data_type='character',
-            model_schema=book_schema,
-            max_length=255,
-        )
-    exp = ['a' + str(i) for i in range(45)]
-    c = 0
-    for i in range(1, 6):
-        for k in ['a', 'b', 'c']:
-            for j in ['attained', 'attempted', 'percentage']:
-                # a = 'co'+i+k+'_'+j
-                exp[c] = FieldSchema.objects.create(
-                    name='co' + str(i) + k + '_' + j,
-                    data_type='integer' if j != 'percentage' else 'float',
-                    model_schema=book_schema,
-                    max_length=255,
-                )
-                c += 1
-    exp2 = ['a' + str(i) for i in range(10)]
-    c1 = 0
-    for i in ['co1', 'co2', 'co3', 'co4', 'co5']:
-        for j in ['attainment_percentage', 'attainment_level']:
-            # b = i+'_'+j
-            exp2[c1] = FieldSchema.objects.create(
-                name=i + '_' + j,
-                data_type='integer' if j != 'attainment_percentage' else 'float',
-                model_schema=book_schema,
-                max_length=255,
-            )
-            c1 += 1
-    Book = book_schema.as_model()
-
-
-def sem_marks_table(reg):
-    book_schema = ModelSchema.objects.create(name=str(reg) + 'sem_marks')
-    q = 'co'
-    alp = ['a', 'b', 'c']
-    # # add fields to the schema
-    lst = ['a' + str(i) for i in range(45)]
-    c = 0
-    '''rno = FieldSchema.objects.create(
-                name='Roll_no',
-                data_type='character',
-                model_schema=book_schema,
-                max_length=255,
-            )'''
-    for i in range(5):
-        for j in alp:
-            lst[c] = FieldSchema.objects.create(
-                name=q + str(i + 1) + '_' + j,
-                data_type='integer',
-                model_schema=book_schema,
-                max_length=255,
-            )
-            c += 1
-    alpp = ['max']
-    for i in range(5):
-        for k in alp:
-            for j in alpp:
-                lst[c] = FieldSchema.objects.create(
-                    name=q + str(i + 1) + '_' + k + '_' + j,
-                    data_type='integer',
-                    model_schema=book_schema,
-                    max_length=255,
-                )
-                c += 1
-    '''Total = FieldSchema.objects.create(
-                name='Total',
-                data_type='integer',
-                model_schema=book_schema,
-                max_length=255,
-            )'''
-    lst1 = ['branch', 'course_code', 'academic_year', 'sem']
-    lst2 = ['branch', 'course_code', 'academic_year', 'sem']
-    for i in range(4):
-        lst1[i] = FieldSchema.objects.create(
-            name=lst2[i],
-            data_type='character',
-            model_schema=book_schema,
-            max_length=255,
-        )
-
-    Book = book_schema.as_model()
-
-
-def sem_marks_insert(regname):
-    book_schema = ModelSchema.objects.get(name='v20sem_marks')
-    Book = book_schema.as_model()
-    df2 = pd.read_excel(regname)
-    maxmarks = list(df2.iloc[3])
-    df = pd.read_excel(regname, skiprows=[0, 1, 2, 3, 4])
-    df.columns = ['sn', 'rno', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14',
-                  'q15']
-    df = df.fillna(-1)
-    df = df.replace('A', -2)
-    branch = 'EEE'
-    course_code = 'V20EET02'
-    academic_year = '2021-22'
-    sem = 'IV'
-    for i in df.index:
-        f = Book.objects.create(co1_a=df['q1'][i], co1_b=df['q2'][i], co1_c=df['q3'][i], co2_a=df['q4'][i],
-                                co2_b=df['q5'][i], co2_c=df['q6'][i], co3_a=df['q7'][i], co3_b=df['q8'][i],
-                                co3_c=df['q9'][i], co4_a=df['q10'][i], co4_b=df['q11'][i], co4_c=df['q12'][i],
-                                co5_a=df['q13'][i], co5_b=df['q14'][i], co5_c=df['q15'][i]
-                                , branch=branch, course_code=course_code, academic_year=academic_year, sem=sem,
-                                co1_a_max=maxmarks[2], co1_b_max=maxmarks[3], co1_c_max=maxmarks[4],
-                                co2_a_max=maxmarks[5], co2_b_max=maxmarks[6], co2_c_max=maxmarks[7],
-                                co3_a_max=maxmarks[8], co3_b_max=maxmarks[9], co3_c_max=maxmarks[10]
-                                , co4_a_max=maxmarks[11], co4_b_max=maxmarks[12], co4_c_max=maxmarks[13],
-                                co5_a_max=maxmarks[14], co5_b_max=maxmarks[15], co5_c_max=maxmarks[16])
-        f.save()
-    calculate_sem_results(regname, academic_year, course_code, branch)
-
-
 def calculate_sem_results(regname, academicyear, coursecode, branch):
     book_schema = ModelSchema.objects.get(name=str(regname) + 'sem_marks')
     book = book_schema.as_model()
@@ -855,3 +694,25 @@ def calculate_sem_results(regname, academicyear, coursecode, branch):
                        co5c_attained=attain[14], co5c_attempted=attem[14], co5c_percentage=per[14],
                        co4_attainment_percentage=attainper[3], co4_attainment_level=attainlvl[3],
                        co5_attainment_percentage=attainper[4], co5_attainment_level=attainlvl[4])
+
+def course_marks(request):
+    return render(request, 'obeapp/obapp/storeinput2.html')
+
+
+def storeinput(request):
+    if request.method == 'POST':
+        nm = request.FILES['file']
+        mid1_marks_insert(nm)
+        mid2_marks_insert(nm)
+    else:
+        return redirect('login')
+    return render(request, 'obeapp/obapp/storeinput2.html')
+
+
+# mid1_marks_table('v20')
+# mid2_marks_table('v20')
+# mid1_results_table('v20')
+# mid2_results_table('v20')
+# sem_marks_table('v20')
+# sem_results_table('v20')
+# print(len(Regulation.objects.filter(Regulation='v20')))

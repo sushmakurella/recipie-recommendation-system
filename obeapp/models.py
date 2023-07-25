@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class Userform(models.Model):
@@ -8,24 +9,46 @@ class Userform(models.Model):
     DateofJoinning= models.DateField()
     Biometricid= models.CharField(max_length=100,primary_key=True)
     password= models.CharField(max_length=100)
-    
+    permission = models.IntegerField(default=0)
 class Regulation(models.Model):
     Sno= models.IntegerField()
     Regulation= models.CharField(max_length=100)
-    startyear= models.IntegerField()
-    endyear= models.IntegerField()
+    batch= models.CharField(max_length=50)
 class Courses(models.Model):
     Sno= models.IntegerField()
     Coursenam= models.CharField(max_length=100)
     Coursecode= models.CharField(max_length=100)
-    
+    Regulation = models.CharField(max_length=100)
+    year = models.CharField(max_length=50)
+    semister = models.CharField(max_length=50)
+    branch = models.CharField(max_length=100,default="-")
 
-
-class Person(models.Model):
-    name = models.CharField(max_length=100)
-    age = models.IntegerField()
-    email = models.EmailField()
-
+class CustomUser(AbstractUser):
+    Designation = models.CharField(max_length=100)
+    # DateofJoinning = models.DateField()
+    Permissions = models.CharField(max_length=1000)
+    Biometricid = models.CharField(max_length=100, primary_key=True)
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name='groups',
+        blank=True,
+        related_name='customuser_set',  # You can change 'customuser_set' to any other appropriate name
+        related_query_name='user'
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        related_name='customuser_set',  # You can change 'customuser_set' to any other appropriate name
+        related_query_name='user'
+    )  
+    username= models.CharField(max_length=100)
+    email= models.CharField(max_length=100)
+class Departments():
+    department_name = models.CharField(max_length=100)
+    department_id = models.CharField(max_length=100)
+    department_hod_name = models.CharField(max_length=200)
+    department_hod_id = models.CharField(max_length=100)
 #****************New******************
 # class Userform(models.Model):
 #     username= models.CharField(max_length=100)

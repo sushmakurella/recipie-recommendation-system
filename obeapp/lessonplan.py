@@ -9,7 +9,7 @@ def login(request):
           if teachers.objects.filter(name=name).exists():
                obj=teachers.objects.get(name=name)
                if(obj.passwd==passwd):
-                    return redirect('mainpage',name)
+                    return redirect('mainpage')
                else:
                     messages.error(request,'invalid passwod please try again')
                     return redirect('login')
