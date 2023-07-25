@@ -1,119 +1,35 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from .forms import NewUserForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from django.db import models
-from django.apps import apps
-from django.contrib import admin
 from dynamic_models.models import ModelSchema, FieldSchema
 from django.shortcuts import render, redirect
-#from .forms import AdminForm
-#from django.contrib.auth.models import dynamic_models_book
 from django.contrib.auth.decorators import login_required
-from .forms import NewUserForm
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth import login, authenticate, logout
-import requests
-from bs4 import BeautifulSoup
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from datetime import datetime
 # admin.site.register(ModelSchema)
 # admin.site.register(FieldSchema)
-# import json
-# from django.http import JsonResponse
-
 import pandas as pd
-import math
 import numpy as np
 from .models import *
 from .forms import *
 
-def home(request):
-    return render(request, 'obeapp/obapp/home.html')
+#<=======================================Admin(HOD's) and Faculty Logins =================================>
 
-# @login_required(login_url='/admin_login')
-def admin_dashboard(request):
-    return render(request, 'obeapp/admin/admin_dashboard.html')
-def faculty_dashboard(request):
-    return render(request, 'obeapp/faculty/faculty_dashboard.html')
-def department_dashboard(request):
-    return render(request, 'obeapp/faculty/department_admin.html')
-def Regulations(request):
-    print("regulation")
-    reg = Regulation.objects.all()
-    return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
-def Course(request):
-    #branch = request.POST['branch']
-    courses = Courses.objects.filter(branch="cse")
-    return render(request, 'obeapp/admin/Courses.html',{'courses':courses})
-def add_course(request):
-    if request.method == "POST":
-        course = request.POST['course']
-        coursecode = request.POST['coursename']
-        reg = request.POST['reg']
-        sem = request.POST['sem']
-        #batch = request.POST['batch']
-        acyear = request.POST['acyear']
-        #branch = request.POST['branch'] should be retrived from hod login
-        branch = "cse"
-        clen = Courses.objects.all()
-        cour = Courses()
-        cour.Sno = len(clen)+1
-        cour.Coursenam = course
-        cour.Coursecode = coursecode
-        cour.Regulation = reg
-        cour.year = acyear
-        cour.semister = sem
-        cour.branch = branch
-        cour.save()
-    return redirect(Course)
-def Manage_Faculty(request):
-    return render(request, 'obeapp/admin/Manage_Faculty.html')
-def admin_hods_dashboard_sam(request):
-    return render(request, 'obeapp/admin_hods_dashboard_sam.html')
-def faculty_dashboard_sam(request):
-    return render(request, 'obeapp/faculty/faculty_dashboard_sam.html')
-def index(request):
-    return render(request, 'obeapp/land.html')
-
-def test1(request):
-    return render(request, 'obeapp/frontend/test1.html')
-
-def add_regulation(request):
-    reg = Regulation.objects.all()
-    if request.method == "POST":
-        regulation = request.POST['regulation']
-        batch = request.POST['batch']
-        print(regulation)
-        if(len(Regulation.objects.filter(Regulation=regulation)) == 0):  
-            Reg = Regulation()
-            Reg.Sno = len(reg)+1
-            Reg.Regulation = regulation
-            Reg.batch = batch
-            Reg.save()
-            reg = Regulation.objects.all()
-            return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
-        else:
-            messages.error(request,'Regulation already exists')
-    return redirect(Regulations)
-    
 def user_login(request):
-    # if request.user.is_authenticated:
-    #     return redirect(admin_dashboard)
     if request.user.is_authenticated:
-        return redirect(faculty_dashboard_sam)
+        return redirect(faculty_dashboard)
     if request.method == "POST":
         uname = request.POST['unamef']
         pswd = request.POST['pswdf']
-        # 
         if CustomUser.objects.filter(username=uname).exists():
                    obj=CustomUser.objects.get(username=uname)
                    if(obj.password==pswd):
                         login(request, obj)
-                        return redirect('faculty_dashboard_sam')
+                        return redirect('faculty_dashboard')
                    else:
                         print("error")
                         messages.error(request,'invalid passwod please try again')
@@ -122,10 +38,7 @@ def user_login(request):
         else:
             print("in else of faculty login*******")
             return render(request, 'obeapp/land.html')
-                    #else:
-                #form.add_error(None, 'Invalid credentials. Please try again.')
     else:
-        #form = LoginForm()
      return render(request, 'obeapp/land.html')
 
 def user_logout(request):
@@ -137,12 +50,18 @@ def user_registration(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')  # Redirect to login page after successful registration
+            return redirect(user_login)  # Redirect to login page after successful registration
 
     else:
         form = RegistrationForm()
 
     return render(request, 'obeapp/faculty/faculty_registration.html', {'form': form})
+
+
+
+
+
+#<=======================================College Admin Logins =================================>
 
 
 def admin_login(request):
@@ -162,34 +81,99 @@ def admin_login(request):
 
 def admin_logout(request):
     logout(request)
-    return redirect(login_request)
+    return redirect(user_login)
 
-def faculty_registration(request):
-    if request.method == 'POST':
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('admin_login')
-    else:
-        form = NewUserForm()
-    return render(request, 'obeapp/faculty_registration.html', {'form': form})
 
-def login_request(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
+
+
+#<=======================================Dashboards funtions =================================>
+
+
+@login_required(login_url='/admin_login')
+def admin_dashboard(request):
+    return render(request, 'obeapp/admin/admin_dashboard.html')
+def faculty_dashboard(request):
+    return render(request, 'obeapp/faculty/faculty_dashboard.html')
+def department_dashboard(request):
+    return render(request, 'obeapp/faculty/department_admin.html')
+
+
+
+#<=======================================Admin Activities =================================>
+
+def Regulations(request):
+    print("regulation")
+    reg = Regulation.objects.all()
+    return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
+
+def add_regulation(request):
+    reg = Regulation.objects.all()
+    if request.method == "POST":
+        regulation = request.POST['regulation']
+        batch = request.POST['batch']
+        print(regulation)
+        if(len(Regulation.objects.filter(Regulation=regulation)) == 0):  
+            Reg = Regulation()
+            Reg.Sno = len(reg)+1
+            Reg.Regulation = regulation
+            Reg.batch = batch
+            Reg.save()
+            reg = Regulation.objects.all()
+            return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
         else:
-            return render(request, 'obeapp/index.html', {'error': 'Invalid credentials'})
-    return render(request, 'obeapp/index.html')
+            messages.error(request,'Regulation already exists')
+    return redirect(Regulations)
 
-def logout_request(request):
-    logout(request)
-    messages.info(request, "You have successfully logged out.")
-    return redirect(login_request)
+def Course(request):
+    courses = Courses.objects.filter(branch="cse")
+    return render(request, 'obeapp/admin/Courses.html',{'courses':courses})
+
+
+def add_course(request):
+    if request.method == "POST":
+        course = request.POST['course']
+        coursecode = request.POST['coursename']
+        reg = request.POST['reg']
+        sem = request.POST['sem']
+        acyear = request.POST['acyear']
+        branch = "cse"
+        clen = Courses.objects.all()
+        cour = Courses()
+        cour.Sno = len(clen)+1
+        cour.Coursenam = course
+        cour.Coursecode = coursecode
+        cour.Regulation = reg
+        cour.year = acyear
+        cour.semister = sem
+        cour.branch = branch
+        cour.save()
+    return redirect(Course)
+
+def Manage_Faculty(request):
+    return render(request, 'obeapp/admin/Manage_Faculty.html')
+
+
+#<=======================================Faculty Activities =================================>
+
+# def admin_hods_dashboard_sam(request):
+#     return render(request, 'obeapp/admin_hods_dashboard_sam.html')
+# def faculty_dashboard_sam(request):
+#     return render(request, 'obeapp/faculty/faculty_dashboard_sam.html')
+# def index(request):
+#     return render(request, 'obeapp/land.html')
+
+# def test1(request):
+#     return render(request, 'obeapp/frontend/test1.html')
+
+
+    
+
+
+
+
+
+# Regulations
+#<=======================================Attainments block =================================>
 
 def mid1_results_table(reg):
     l1 = ['branch', 'coursecode', 'acyear', 'sem']

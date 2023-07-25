@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser,PermissionsMixin
+
 
 # Create your models here.
 class Userform(models.Model):
@@ -23,7 +24,7 @@ class Courses(models.Model):
     semister = models.CharField(max_length=50)
     branch = models.CharField(max_length=100,default="-")
 
-class CustomUser(AbstractUser):
+class CustomUser(AbstractUser,PermissionsMixin):
     Designation = models.CharField(max_length=100)
     # DateofJoinning = models.DateField()
     Permissions = models.CharField(max_length=1000)

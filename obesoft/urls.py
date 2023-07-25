@@ -21,5 +21,4 @@ from obeapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('obeapp.urls')),
-    # path('form',views.form,name='form'),
 ]

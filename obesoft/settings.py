@@ -81,9 +81,9 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'obsoft2',
+        'NAME': 'obesoft',
         'USER':'root',
-        'PASSWORD':'jaga@6493',
+        'PASSWORD':'root',
         'HOST':'localhost',
         'port':'3306'
 
