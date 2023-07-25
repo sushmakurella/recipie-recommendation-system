@@ -45,8 +45,31 @@ def Regulations(request):
     print("regulation")
     reg = Regulation.objects.all()
     return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
-def Courses(request):
-    return render(request, 'obeapp/admin/Courses.html')
+def Course(request):
+    #branch = request.POST['branch']
+    courses = Courses.objects.filter(branch="cse")
+    return render(request, 'obeapp/admin/Courses.html',{'courses':courses})
+def add_course(request):
+    if request.method == "POST":
+        course = request.POST['course']
+        coursecode = request.POST['coursename']
+        reg = request.POST['reg']
+        sem = request.POST['sem']
+        #batch = request.POST['batch']
+        acyear = request.POST['acyear']
+        #branch = request.POST['branch'] should be retrived from hod login
+        branch = "cse"
+        clen = Courses.objects.all()
+        cour = Courses()
+        cour.Sno = len(clen)+1
+        cour.Coursenam = course
+        cour.Coursecode = coursecode
+        cour.Regulation = reg
+        cour.year = acyear
+        cour.semister = sem
+        cour.branch = branch
+        cour.save()
+    return redirect(Course)
 def Manage_Faculty(request):
     return render(request, 'obeapp/admin/Manage_Faculty.html')
 def admin_hods_dashboard_sam(request):
@@ -61,13 +84,11 @@ def test1(request):
 
 def add_regulation(request):
     reg = Regulation.objects.all()
-    print("@@@@@@@@@@@@@@@")
     if request.method == "POST":
         regulation = request.POST['regulation']
         batch = request.POST['batch']
         print(regulation)
         if(len(Regulation.objects.filter(Regulation=regulation)) == 0):  
-            print("###########")
             Reg = Regulation()
             Reg.Sno = len(reg)+1
             Reg.Regulation = regulation
@@ -76,9 +97,8 @@ def add_regulation(request):
             reg = Regulation.objects.all()
             return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
         else:
-            print("$$$$$$$$$$$$$$$")
             messages.error(request,'Regulation already exists')
-    return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
+    return redirect(Regulations)
     
 def user_login(request):
     # if request.user.is_authenticated:
