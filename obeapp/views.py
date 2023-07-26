@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -148,6 +148,31 @@ def add_course(request):
         cour.branch = branch
         cour.save()
     return redirect(Course)
+
+def edit_course(request, course_id):
+    course = get_object_or_404(Courses, pk=course_id)
+    
+    if request.method == "POST":
+        # Retrieve the edited course information
+        course_name = request.POST['course']
+        course_code = request.POST['coursename']
+        regulation = request.POST['reg']
+        semester = request.POST['sem']
+        academic_year = request.POST['acyear']
+
+        # Update the course fields
+        course.Coursenam = course_name
+        course.Coursecode = course_code
+        course.Regulation = regulation
+        course.year = academic_year
+        course.semister = semester
+        course.save()
+
+        # Redirect back to the Course list page
+        return redirect('Courses')  # Assuming you've named the URL for the course list page as 'course-list'
+
+    return render(request, 'obeapp/admin/edit_course.html', {'course': course})
+
 
 def Manage_Faculty(request):
     return render(request, 'obeapp/admin/Manage_Faculty.html')

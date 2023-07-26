@@ -1,6 +1,6 @@
 
 {% extends "./index.html" %}
-{% block courses %}
+{% block editcourses %}
 {% load static %}
 <style type="text/css">
     td,thead{
@@ -8,26 +8,26 @@
     }
 
 </style>
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="bg-gradient-primary shadow-primary border-radius-lg py-2 pe-1">
         <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Courses</h4>
-    </div>
+      </div>
 
-    <div class="table-responsive">
-        <table class="table align-items-center">
-            <thead>
-                <tr>
-                    <th>S.NO</th>
-                    <th>Courses</th>
-                    <th>Course Code</th>
-                    <th>Regulations</th>
-                    <th>Semester</th>
-                    <th>Year</th>
-                    <th>Branch</th>
-                    <th>Actions</th>  <!-- New column for actions (Edit and Delete) -->
-                </tr>
-            </thead>
-            {% for i in courses %}
+
+<div class="table-responsive ">
+    <table class="table align-items-center">
+        <thead>
+            <tr>
+                <th >S.NO</th>
+                <th >Courses</th>
+                <th >Course Code</th>
+                <th >Regulations</th>
+                <th >Semester</th>
+                <th >Year</th>
+                <th >Branch</th>
+            </tr>
+        </thead>
+        {% for i in courses %}
             <tr>
                 <td>{{i.Sno}}</td>
                 <td>{{i.Coursenam}}</td>
@@ -36,39 +36,36 @@
                 <td>{{i.semister}}</td>
                 <td>{{i.year}}</td>
                 <td>{{i.branch}}</td>
-                <td>
-                    <a href="{% url 'edit_course' i.pk %}" class="btn btn-primary btn-sm">Edit</a>
-                </td>
             </tr>
             {% endfor %}
-
-        </table>
-    </div>
-</div>
+      
+    </table>
+  </div>
+</div> -->
 <div class="container-fluid my-4">
     <div class="bg-gradient-secondary shadow-primary border-radius-lg py-2 pe-1">
-        <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Add Courses</h4>
+        <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Edit Courses</h4>
       </div>
     
         <div class="card">
           <div class="card-body p-3 pt-2">
-            <form role="form" method="POST" action="add_course">
+            <form  method="POST" >
               {% csrf_token %}
                 <div class="input-group input-group-outline mb-3">
                   <label class="form-label">Courses</label>
-                  <input type="text" class="form-control" name="course">
+                  <input type="text" class="form-control" name="course" value="{{ course.Coursenam }}" required>
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <label class="form-label">Coursecode</label>
-                  <input type="text" class="form-control" name="coursename">
+                  <input type="text" class="form-control" name="coursename" value="{{ course.Coursecode }}" required>
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <label class="form-label">Regulation</label>
-                  <input type="text" class="form-control" name="reg">
+                  <input type="text" class="form-control" name="reg" value="{{ course.Regulation }}" required>
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <label class="form-label">Semester</label>
-                  <select id="dropdown" class="form-control" name="sem">
+                  <select id="dropdown" class="form-control" name="sem" value="{{ course.semister }}" required>
                     <option value="0"> </option>
                     <option value="I">I</option>
                     <option value="II">II</option>
@@ -86,7 +83,7 @@
                 </div> -->
                 <div class="input-group input-group-outline mb-3">
                   <label class="form-label">Academic Year</label>
-                  <input type="text" class="form-control" name="acyear">
+                  <input type="text" class="form-control" name="acyear" value="{{ course.year }}" required>
                 </div>
                 <!-- <div class="form-check form-check-info text-start ps-0">
                   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
@@ -95,7 +92,7 @@
                   </label>
                 </div> -->
                 <div class="text-center">
-                  <input type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" value="Add Course">
+                  <input type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" value="Save">
                 </div>
               </form>
               </div>
