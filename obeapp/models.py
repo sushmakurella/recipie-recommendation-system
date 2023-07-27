@@ -24,27 +24,39 @@ class Courses(models.Model):
     semister = models.CharField(max_length=50)
     branch = models.CharField(max_length=100,default="-")
 
-class CustomUser(AbstractUser,PermissionsMixin):
+class CustomUser(AbstractUser, PermissionsMixin):
+    sno = models.CharField(max_length=100, default=0)
     Designation = models.CharField(max_length=100)
-    # DateofJoinning = models.DateField()
+    UName = models.CharField(max_length=200, default="None")
     Permissions = models.CharField(max_length=1000)
-    Biometricid = models.CharField(max_length=100, primary_key=True)
+    Biometricid = models.CharField(max_length=100)
+    branch = models.CharField(max_length=100, default="None")
+
+    # Remove 'username' and 'email' fields, as they are already provided by AbstractUser
+
+    # Add this field to use 'email' as the unique identifier for the user
+    USERNAME_FIELD = 'email'
+
+    # Add a unique related_name for the groups field
     groups = models.ManyToManyField(
         'auth.Group',
         verbose_name='groups',
         blank=True,
-        related_name='customuser_set',  # You can change 'customuser_set' to any other appropriate name
-        related_query_name='user'
+        related_name='custom_user_groups',  # Use a unique related_name for the groups field
+        related_query_name='custom_user'
     )
+
+    # Add a unique related_name for the user_permissions field
     user_permissions = models.ManyToManyField(
         'auth.Permission',
         verbose_name='user permissions',
         blank=True,
-        related_name='customuser_set',  # You can change 'customuser_set' to any other appropriate name
-        related_query_name='user'
-    )  
-    username= models.CharField(max_length=100)
-    email= models.CharField(max_length=100)
+        related_name='custom_user_permissions',  # Use a unique related_name for the user_permissions field
+        related_query_name='custom_user'
+    )
+
+    def __str__(self):
+        return self.email
 class Departments():
     department_name = models.CharField(max_length=100)
     department_id = models.CharField(max_length=100)

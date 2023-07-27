@@ -15,7 +15,11 @@ urlpatterns = [
     path('Courses',views.Course,name='Courses'),
     path('add_course',views.add_course,name='add_course'),
     path('edit_course/<int:course_id>/', views.edit_course, name='edit_course'),
+    path('delete_course/<int:course_id>/', views.delete_course, name='delete_course'),
     path('Manage_Faculty',views.Manage_Faculty,name='Manage_FacultyManage_Faculty'),
+    path('add_faculty',views.add_faculty,name='add_faculty'),
+    path('edit_faculty/<int:id>/', views.edit_faculty, name='edit_faculty'),
+    path('delete_faculty/<int:id>/', views.delete_faculty, name='delete_faculty'),
     #<=========================================Faculty urls=======================================>
     
     # path('test1',views.test1,name='test1'),

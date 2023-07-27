@@ -148,6 +148,16 @@ def add_course(request):
         cour.branch = branch
         cour.save()
     return redirect(Course)
+    # if request.method == 'POST':
+    #     form = RegistrationForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect(Manage_Faculty)  # Redirect to login page after successful registration
+
+    # else:
+    #     form = RegistrationForm()
+
+    # return render(request, 'obeapp/Manage_Faculty.html', {'form': form})
 
 def edit_course(request, course_id):
     course = get_object_or_404(Courses, pk=course_id)
@@ -173,9 +183,75 @@ def edit_course(request, course_id):
 
     return render(request, 'obeapp/admin/edit_course.html', {'course': course})
 
+def delete_course(request, course_id):
+    # Get the course object to be deleted
+    course = get_object_or_404(Courses, pk=course_id)
+    course.delete()
+    return redirect('Courses')  # Assuming you've named the URL for the course list page as 'course-list'
+
 
 def Manage_Faculty(request):
-    return render(request, 'obeapp/admin/Manage_Faculty.html')
+    customuser = CustomUser.objects.filter(branch="cse")
+    return render(request, 'obeapp/admin/Manage_Faculty.html',{'custom_user':customuser})
+def add_faculty(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        bioid = request.POST['bioid']
+        desig = request.POST['desig']
+        email = request.POST['email']
+        coursedealing = request.POST['coursedealing']
+        branch  = request.POST['branch']
+        branch = "cse"
+        clen = CustomUser.objects.all()
+        cour = CustomUser()
+        cour.sno = len(clen)+1
+        cour.username=name
+        #cour.UNname = name
+        #print(cour.UNname)
+        cour.Biometricid = bioid
+        cour.Designation = desig
+        cour.email = email
+        cour.Permissions = coursedealing
+        cour.branch = branch
+        cour.save()
+        print("Success")
+    return redirect(Manage_Faculty)
+
+def edit_faculty(request, id):
+    cour = get_object_or_404(CustomUser, pk=id)
+    
+    if request.method == "POST":
+        # Retrieve the edited course information
+        name = request.POST['name']
+        bioid = request.POST['bioid']
+        desig = request.POST['desig']
+        email = request.POST['email']
+        coursedealing = request.POST['coursedealing']
+        branch  = request.POST['branch']
+        branch = "cse"
+        print("################################")
+        #cour = CustomUser()
+        # Update the course fields
+        cour.username=name
+        #cour.UNname = name
+        #print(cour.UNname)
+        cour.Biometricid = bioid
+        cour.Designation = desig
+        cour.email = email
+        cour.Permissions = coursedealing
+        cour.branch = branch
+        cour.save()
+
+        # Redirect back to the Course list page
+        return redirect(Manage_Faculty)  # Assuming you've named the URL for the course list page as 'course-list'
+
+    return render(request, 'obeapp/admin/edit_faculty.html', {'cour': cour})
+
+def delete_faculty(request, id):
+    # Get the course object to be deleted
+    cour = get_object_or_404(CustomUser, pk=id)
+    cour.delete()
+    return redirect(Manage_Faculty)
 
 
 #<=======================================Faculty Activities =================================>

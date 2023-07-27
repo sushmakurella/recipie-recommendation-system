@@ -75,25 +75,25 @@ WSGI_APPLICATION = 'obesoft.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
+DATABASES = {
+    'default': {
         
-#         # 'ENGINE': 'django.db.backends.sqlite3',
-#         # 'NAME': BASE_DIR / 'db.sqlite3',
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'obsoft2',
-#         'USER':'root',
-#         'PASSWORD':'jaga@6493',
-#         'HOST':'localhost',
-#         'port':'3306'
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hello',
+        'USER':'root',
+        'PASSWORD':'root',
+        'HOST':'localhost',
+        'port':'3306'
 
         
-#     }
-# }
-import dj_database_url
-DATABASES = {
-     'default': dj_database_url.parse("postgres://obsoftteam:t9hY58Mm8QJ6KrOm7Xs2AUVIghBwNyzq@dpg-cj0llu3438irjje6kovg-a.oregon-postgres.render.com/obesoft")
+    }
 }
+# import dj_database_url
+# DATABASES = {
+#      'default': dj_database_url.parse("postgres://obsoftteam:t9hY58Mm8QJ6KrOm7Xs2AUVIghBwNyzq@dpg-cj0llu3438irjje6kovg-a.oregon-postgres.render.com/obesoft")
+# }
 
 
 # Password validation

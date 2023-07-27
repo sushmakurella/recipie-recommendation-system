@@ -38,6 +38,7 @@
                 <td>{{i.branch}}</td>
                 <td>
                     <a href="{% url 'edit_course' i.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'delete_course' i.pk %}" class="btn btn-primary btn-sm">Delete</a>
                 </td>
             </tr>
             {% endfor %}

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Userform
+from .models import *
 from django.forms import DateInput
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.forms import *
@@ -8,21 +8,21 @@ from .models import *
 # Create your forms here.
 
 
-class NewUserForm(UserCreationForm):
+# class NewUserForm(UserCreationForm):
 
-	class Meta:
-		model = Userform
-		fields = ("username", "email","Designation","DateofJoinning","Biometricid","password")
-		widgets = {
-			 'DateofJoinning':DateInput(attrs={'type':'date'}),
+# 	class Meta:
+# 		model = Userform
+# 		fields = ("username", "email","Designation","DateofJoinning","Biometricid","password")
+# 		widgets = {
+# 			 'DateofJoinning':DateInput(attrs={'type':'date'}),
 			 
-		}
+# 		}
 
-	def save(self, commit=True):
-		user = super(NewUserForm, self).save(commit=False)
-		user.email = self.cleaned_data['email']
-		if commit:
-			user.save()
+# 	def save(self, commit=True):
+# 		user = super(NewUserForm, self).save(commit=False)
+# 		user.email = self.cleaned_data['email']
+# 		if commit:
+# 			user.save()
 
 # from .models import Person
 
@@ -39,7 +39,7 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'Designation', 'Biometricid', 'password']
+        fields = ['username','Designation', 'Biometricid','branch', 'password']
 
     def clean(self):
         cleaned_data = super().clean()
