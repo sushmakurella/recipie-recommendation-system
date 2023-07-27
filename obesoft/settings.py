@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'obesoft.wsgi.application'
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'obsoft2',
 #         'USER':'root',
-#         'PASSWORD':'root',
+#         'PASSWORD':'jaga@6493',
 #         'HOST':'localhost',
 #         'port':'3306'
 

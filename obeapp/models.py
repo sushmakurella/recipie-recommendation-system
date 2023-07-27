@@ -11,6 +11,11 @@ class Userform(models.Model):
     Biometricid= models.CharField(max_length=100,primary_key=True)
     password= models.CharField(max_length=100)
     permission = models.IntegerField(default=0)
+class Departments(models.Model):
+    department_name = models.CharField(max_length=100)
+    department_id = models.CharField(max_length=100)
+    department_hod_name = models.CharField(max_length=200)
+    department_hod_id = models.CharField(max_length=100)
 class Regulation(models.Model):
     Sno= models.IntegerField()
     Regulation= models.CharField(max_length=100)
@@ -57,11 +62,6 @@ class CustomUser(AbstractUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-class Departments():
-    department_name = models.CharField(max_length=100)
-    department_id = models.CharField(max_length=100)
-    department_hod_name = models.CharField(max_length=200)
-    department_hod_id = models.CharField(max_length=100)
 #****************New******************
 # class Userform(models.Model):
 #     username= models.CharField(max_length=100)

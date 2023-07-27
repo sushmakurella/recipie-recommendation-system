@@ -264,7 +264,44 @@ def delete_faculty(request, id):
     cour.delete()
     return redirect(ManageFaculty)
 
+def Department(request):
+    dept1 = Departments.objects.all()
+    print(dept1)
+    num=[i for i in range(1,len(dept1)+1)]
+    dept=zip(dept1,num)
+    return render(request, 'obeapp/admin/dept_hod.html',{'dept':dept})
 
+def add_department(request):
+    if request.method == "POST":
+        dept = request.POST['dept']
+        deptid = request.POST['deptid']
+        hod = request.POST['hod']
+        hodid = request.POST['hodid']
+        cour = Departments()
+        cour.department_name = dept
+        cour.department_id = deptid
+        cour.department_hod_name = hod
+        cour.department_hod_id = hodid
+        cour.save()
+    return redirect(Department)
+def edit_department(request, department_id):
+    cour = get_object_or_404(Departments, pk=department_id)
+    if request.method == "POST":
+        # Retrieve the edited course information
+        dept = request.POST['dept']
+        deptid = request.POST['deptid']
+        hod = request.POST['hod']
+        hodid = request.POST['hodid']
+        # Update the course fields
+        cour.department_name = dept
+        cour.department_id = deptid
+        cour.department_hod_name = hod
+        cour.department_hod_id = hodid
+        cour.save()
+        # Redirect back to the Course list page
+        return redirect(Department)  # Assuming you've named the URL for the course list page as 'course-list'
+
+    return render(request, 'obeapp/admin/edit_dept.html', {'dept': cour})
 #<=======================================Faculty Activities =================================>
 
 # def admin_hods_dashboard_sam(request):

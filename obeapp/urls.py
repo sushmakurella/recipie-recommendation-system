@@ -20,6 +20,9 @@ urlpatterns = [
     path('add_faculty',views.add_faculty,name='add_faculty'),
     path('edit_faculty/<int:id>/', views.edit_faculty, name='edit_faculty'),
     path('delete_faculty/<int:id>/', views.delete_faculty, name='delete_faculty'),
+    path('Department',views.Department,name='Department'),
+    path('add_department',views.add_department,name='add_department'),
+    path('edit_department/<str:department_id>/', views.edit_department, name='edit_department'),
     #<=========================================Faculty urls=======================================>
     
     # path('test1',views.test1,name='test1'),
