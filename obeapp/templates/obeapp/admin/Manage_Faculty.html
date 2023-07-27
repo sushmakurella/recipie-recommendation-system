@@ -1,11 +1,47 @@
 
 {% extends "./index.html" %}
-{% block faculty %}
+{% block managefaculty %}
 {% load static %}
 <style type="text/css">
     td,thead{
         text-align: center;
     }
+/* Add your desired styling for the droplist */
+.droplist-container {
+  position: relative;
+  width: 200px; /* Adjust the width as needed */
+}
+
+.selected-item {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #f15435;
+  border-radius: 4px;
+}
+
+.droplist {
+  display: none;
+  position: absolute;
+  width: 100%;
+  max-height: 150px; /* Adjust the maximum height as needed */
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: 1px solid #050202;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.option {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  padding: 8px 8px;
+}
+
+.option:hover {
+  background-color: #f1f1f1;;
+}
 
 </style>
 <div class="container-fluid">
@@ -32,13 +68,13 @@
         
         {% for i,j in custom_user %}
         <tr>
-            <td>{{j}}</td>
-            <td>{{i.username}}</td>
-            <td>{{i.Biometricid}}</td>
-            <td>{{i.Designation}}</td>
-            <td>{{i.email}}</td>
-            <td>{{i.Permissions}}</td>
-            <td>{{i.branch}}</td>
+            <td>{{j|safe}}</td>
+            <td>{{i.username|safe}}</td>
+            <td>{{i.Biometricid|safe}}</td>
+            <td>{{i.Designation|safe}}</td>
+            <td>{{i.email|safe}}</td>
+            <td>{{i.Permissions|safe}}</td>
+            <td>{{i.branch|safe}}</td>
             <td>
               <a href="{% url 'edit_faculty' i.pk %}" class="btn btn-primary btn-sm">Edit</a>
               <a href="{% url 'delete_faculty' i.pk %}" class="btn btn-primary btn-sm">Delete</a>
@@ -78,12 +114,15 @@
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <label class="form-label" for="coursedealing">Course Dealing</label>
-                  <input type="text" list="coursedealing" class="form-control" name="coursedealing" required>
-                  <datalist id="coursedealing">
-                    {% for i in courses %}
-                    <option value="{{i}}">
-                    {% endfor %}
-                  </datalist>
+                  <input type="text" list="coursedealing" class="form-control" name="coursedealing" id="coursedealing-input" required>
+                  <div class="droplist-container">
+                    <div class="selected-item" id="selectedItem"><b>Select Coursecode &#8595;</b></div>
+                    <div class="droplist" id="droplist">
+                      {% for i in courses %}
+                      <div class="option" data-value="{{i.Coursecode|safe}}"><b>{{i.Coursecode}}</b></div>
+                      {% endfor %}
+                    </div>
+                  </div>
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <label class="form-label">Branch</label>
@@ -104,7 +143,37 @@
           
     </div>
 </div>
-          
+
+<script>
+  const selectedItem = document.getElementById('selectedItem');
+  const droplist = document.getElementById('droplist');
+  const inputBox = document.getElementById('coursedealing-input'); // Reference to the input box
+  const selectedValues = []; // Array to store selected values
+
+  selectedItem.addEventListener('click', function () {
+    droplist.style.display = droplist.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Add event listeners to each option
+  const options = document.querySelectorAll('.option');
+  options.forEach(option => {
+    option.addEventListener('click', function () {
+      const selectedValue = option.dataset.value;
+
+      // Toggle the selection
+      if (selectedValues.includes(selectedValue)) {
+        const index = selectedValues.indexOf(selectedValue);
+        selectedValues.splice(index, 1);
+      } else {
+        selectedValues.push(selectedValue);
+      }
+
+      // Update the selected item text and input box value
+      //selectedItem.textContent = selectedValues.join(', ');
+      inputBox.value = selectedValues.join(',');
+    });
+  });
+</script>
 
 
 

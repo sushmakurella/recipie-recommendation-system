@@ -157,12 +157,12 @@ def add_course(request):
     #     form = RegistrationForm(request.POST)
     #     if form.is_valid():
     #         form.save()
-    #         return redirect(Manage_Faculty)  # Redirect to login page after successful registration
+    #         return redirect(ManageFaculty)  # Redirect to login page after successful registration
 
     # else:
     #     form = RegistrationForm()
 
-    # return render(request, 'obeapp/Manage_Faculty.html', {'form': form})
+    # return render(request, 'obeapp/ManageFaculty.html', {'form': form})
 
 def edit_course(request, course_id):
     course = get_object_or_404(Courses, pk=course_id)
@@ -195,12 +195,12 @@ def delete_course(request, course_id):
     return redirect('Courses')  # Assuming you've named the URL for the course list page as 'course-list'
 
 
-def Manage_Faculty(request):
+def ManageFaculty(request):
     customuser1 = CustomUser.objects.filter(branch="cse")
     courses = Courses.objects.all()
     num=[i for i in range(1,len(customuser1)+1)]
     customuser=zip(customuser1,num)
-    return render(request, 'obeapp/admin/Manage_Faculty.html',{'custom_user':customuser},{'courses':courses})
+    return render(request, 'obeapp/admin/Manage_Faculty.html',{'custom_user':customuser,'courses':courses})
 def add_faculty(request):
     if request.method == "POST":
         name = request.POST['name']
@@ -223,7 +223,7 @@ def add_faculty(request):
         cour.branch = branch
         cour.save()
         print("Success")
-    return redirect(Manage_Faculty)
+    return redirect(ManageFaculty)
 
 def edit_faculty(request, id):
     cour = get_object_or_404(CustomUser, pk=id)
@@ -251,7 +251,7 @@ def edit_faculty(request, id):
         cour.save()
 
         # Redirect back to the Course list page
-        return redirect(Manage_Faculty)  # Assuming you've named the URL for the course list page as 'course-list'
+        return redirect(ManageFaculty)  # Assuming you've named the URL for the course list page as 'course-list'
 
     return render(request, 'obeapp/admin/edit_faculty.html', {'cour': cour})
 
@@ -259,7 +259,7 @@ def delete_faculty(request, id):
     # Get the course object to be deleted
     cour = get_object_or_404(CustomUser, pk=id)
     cour.delete()
-    return redirect(Manage_Faculty)
+    return redirect(ManageFaculty)
 
 
 #<=======================================Faculty Activities =================================>
