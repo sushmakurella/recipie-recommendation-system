@@ -96,8 +96,11 @@ def admin_dashboard(request):
 def faculty_dashboard(request):
     return render(request, 'obeapp/faculty/faculty_dashboard.html')
 def department_dashboard(request):
-    return render(request, 'obeapp/faculty/department_admin.html')
-
+    return render(request, 'obeapp/department/department_admin.html')
+def course_view(request):
+     return render(request,'obeapp/admin/course_view.html')
+def dept_course_view(request):
+     return render(request,'obeapp/department/course_view.html')
 
 
 #<=======================================Admin Activities =================================>
@@ -200,7 +203,7 @@ def ManageFaculty(request):
     courses = Courses.objects.all()
     num=[i for i in range(1,len(customuser1)+1)]
     customuser=zip(customuser1,num)
-    return render(request, 'obeapp/admin/Manage_Faculty.html',{'custom_user':customuser,'courses':courses})
+    return render(request, 'obeapp/department/Manage_Faculty.html',{'custom_user':customuser,'courses':courses})
 def add_faculty(request):
     if request.method == "POST":
         name = request.POST['name']
@@ -253,7 +256,7 @@ def edit_faculty(request, id):
         # Redirect back to the Course list page
         return redirect(ManageFaculty)  # Assuming you've named the URL for the course list page as 'course-list'
 
-    return render(request, 'obeapp/admin/edit_faculty.html', {'cour': cour})
+    return render(request, 'obeapp/department/edit_faculty.html', {'cour': cour})
 
 def delete_faculty(request, id):
     # Get the course object to be deleted

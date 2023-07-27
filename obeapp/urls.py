@@ -51,4 +51,6 @@ urlpatterns = [
     path('lessonplan/viewplan',lessonplan.viewplan,name='viewplan'),
     path('lessonplan/mainpage',lessonplan.mainpage,name='mainpage'),
     #path('lessonplan/mainpageview',lessonplan.mainpageview,name='mainpageview'),
+    path('course_view',views.course_view,name='course_view'),
+    path('dept_course_view',views.dept_course_view,name='dept_course_view')
 ]

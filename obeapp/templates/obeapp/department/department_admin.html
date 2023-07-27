@@ -1,5 +1,5 @@
-{% extends "./index.html" %}
-{% block faculty %}
+{% extends "./dept_index.html" %}
+{% block department %}
 
 
 
@@ -21,7 +21,7 @@
           <div class="card-footer p-3">
             <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
              -->
-             <a href="{% url 'inputcoursecode' %}" class="btn btn-primary">view plan</a>
+             <a href="{% url 'dept_course_view' %}" class="btn btn-primary">view plan</a>
           </div>
         </div>
       </div>

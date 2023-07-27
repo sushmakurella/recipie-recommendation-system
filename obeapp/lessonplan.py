@@ -239,7 +239,7 @@ def viewplan(request):
           
              course_outcome="CO"+str(i)
              lp_co=lectureplan.objects.filter(course_code=coursecode,course_outcome=course_outcome)
-             print("***************************")
+             #print("***************************")
              print(lp_co)
              lst.append(lp_co)    
         rfbook=referencebooks.objects.filter(course_code=coursecode)
