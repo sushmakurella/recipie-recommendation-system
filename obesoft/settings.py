@@ -126,7 +126,8 @@ USE_I18N = True
 
 USE_TZ = True
 import os
-STATIC_URL = 'staticfiles/'
+# STATIC_URL = 'staticfiles/'
+STATIC_URL = 'https://cdn.jsdelivr.net/gh/obsoftteam/files@main/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'staticfiles')
 ] 

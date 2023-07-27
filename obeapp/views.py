@@ -104,7 +104,7 @@ def department_dashboard(request):
 def Regulations(request):
     print("regulation")
     reg = Regulation.objects.all()
-    return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
+    return render(request, 'obeapp/admin/Regulations.html',{'reg':reg})
 
 def add_regulation(request):
     reg = Regulation.objects.all()
@@ -119,7 +119,7 @@ def add_regulation(request):
             Reg.batch = batch
             Reg.save()
             reg = Regulation.objects.all()
-            return render(request, 'obeapp/admin/regulations.html',{'reg':reg})
+            return render(request, 'obeapp/admin/Regulations.html',{'reg':reg})
         else:
             messages.error(request,'Regulation already exists')
     return redirect(Regulations)
@@ -169,7 +169,7 @@ def edit_course(request, course_id):
         course.save()
 
         # Redirect back to the Course list page
-        return redirect('Courses')  # Assuming you've named the URL for the course list page as 'course-list'
+        return redirect(Course)  # Assuming you've named the URL for the course list page as 'course-list'
 
     return render(request, 'obeapp/admin/edit_course.html', {'course': course})
 
