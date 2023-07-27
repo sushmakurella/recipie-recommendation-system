@@ -20,6 +20,8 @@ def mainpage(request):
      #usname=teachers.objects.get(name=name)
      #return render(request,'obeapp/obapp/mainpage.html',{'usname':usname})
      return render(request,'obeapp/obapp/mainpage.html')
+# def mainpageview(request):
+#     return render(request,'obeapp/obapp/mainpageview.html')
 def inputform(request):
     return render(request,'obeapp/obapp/inputform.html')
 def storeinput(request):

@@ -46,4 +46,5 @@ urlpatterns = [
     path('lessonplan/updateinput',lessonplan.updateinput,name='storeinput'),
     path('lessonplan/viewplan',lessonplan.viewplan,name='viewplan'),
     path('lessonplan/mainpage',lessonplan.mainpage,name='mainpage'),
+    #path('lessonplan/mainpageview',lessonplan.mainpageview,name='mainpageview'),
 ]
