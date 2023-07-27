@@ -76,6 +76,7 @@ def admin_login(request):
             request.session['user_name'] = uname
             return redirect(admin_dashboard)
         else:
+
             return render(request, 'obeapp/admin_login.html', {'error': True})
     return render(request, 'obeapp/admin_login.html')
 
@@ -103,7 +104,9 @@ def department_dashboard(request):
 
 def Regulations(request):
     print("regulation")
-    reg = Regulation.objects.all()
+    reg1 = Regulation.objects.all()
+    num=[i for i in range(1,len(reg1)+1)]
+    reg=zip(reg1,num)
     return render(request, 'obeapp/admin/Regulations.html',{'reg':reg})
 
 def add_regulation(request):
@@ -125,7 +128,9 @@ def add_regulation(request):
     return redirect(Regulations)
 
 def Course(request):
-    courses = Courses.objects.filter(branch="cse")
+    courses1 = Courses.objects.filter(branch="cse")
+    num=[i for i in range(1,len(courses1)+1)]
+    courses=zip(courses1,num)
     return render(request, 'obeapp/admin/Courses.html',{'courses':courses})
 
 
@@ -191,8 +196,11 @@ def delete_course(request, course_id):
 
 
 def Manage_Faculty(request):
-    customuser = CustomUser.objects.filter(branch="cse")
-    return render(request, 'obeapp/admin/Manage_Faculty.html',{'custom_user':customuser})
+    customuser1 = CustomUser.objects.filter(branch="cse")
+    courses = Courses.objects.all()
+    num=[i for i in range(1,len(customuser1)+1)]
+    customuser=zip(customuser1,num)
+    return render(request, 'obeapp/admin/Manage_Faculty.html',{'custom_user':customuser},{'courses':courses})
 def add_faculty(request):
     if request.method == "POST":
         name = request.POST['name']

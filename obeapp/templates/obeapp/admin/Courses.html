@@ -27,9 +27,9 @@
                     <th>Actions</th>  <!-- New column for actions (Edit and Delete) -->
                 </tr>
             </thead>
-            {% for i in courses %}
+            {% for i,j in courses %}
             <tr>
-                <td>{{i.Sno}}</td>
+                <td>{{j}}</td>
                 <td>{{i.Coursenam}}</td>
                 <td>{{i.Coursecode}}</td>
                 <td>{{i.Regulation}}</td>

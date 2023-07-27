@@ -30,9 +30,9 @@
             </tr>
         </thead>
         
-        {% for i in custom_user %}
+        {% for i,j in custom_user %}
         <tr>
-            <td>{{i.sno}}</td>
+            <td>{{j}}</td>
             <td>{{i.username}}</td>
             <td>{{i.Biometricid}}</td>
             <td>{{i.Designation}}</td>
@@ -77,8 +77,13 @@
                   <input type="email" class="form-control" name="email" required>
                 </div>
                 <div class="input-group input-group-outline mb-3">
-                  <label class="form-label">Course Dealing</label>
-                  <input type="text" class="form-control" name="coursedealing" required>
+                  <label class="form-label" for="coursedealing">Course Dealing</label>
+                  <input type="text" list="coursedealing" class="form-control" name="coursedealing" required>
+                  <datalist id="coursedealing">
+                    {% for i in courses %}
+                    <option value="{{i}}">
+                    {% endfor %}
+                  </datalist>
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <label class="form-label">Branch</label>
