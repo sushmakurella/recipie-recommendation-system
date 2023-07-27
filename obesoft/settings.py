@@ -126,7 +126,8 @@ USE_I18N = True
 
 USE_TZ = True
 import os
-STATIC_URL = 'staticfiles/'
+# STATIC_URL = 'staticfiles/'
+STATIC_URL = 'https://github.com/obsoftteam/obe_finalproject/tree/main/staticfiles/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'staticfiles')
 ] 
