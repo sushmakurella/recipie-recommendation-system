@@ -32,6 +32,8 @@ urlpatterns = [
     path('user_register',views.user_registration,name='user_register'),
     path('user_logout',views.user_logout,name='user_logout'),
     path('faculty_dashboard',views.faculty_dashboard,name='faculty_dashboard'),
+    path('upload_course_atte',views.upload_course_atte,name='upload_course_atte'),
+    path('course_attenment',views.course_attenment,name='course_attenment'),
 
     #<=========================================College Admin urls=======================================>
 

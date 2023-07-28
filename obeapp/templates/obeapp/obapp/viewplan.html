@@ -170,15 +170,18 @@
             .printbut{
                 width: 150px;
                 height: 50px;
-                font-size: 30;
+                font-size: 20;
                 font-weight: 400;
                 border-style: none;
                 border-radius: 15px;
-                background: linear-gradient(25deg, #865DFF,#E384FF,#FFA3FD);
+                background: #E91E63;
                 color: aliceblue;
                 position: relative;
                 margin-left: 1200px;
                 margin-bottom: 100px;
+            }
+            .printbut:hover{
+                cursor: pointer;
             }
             .empty{
                 height: 100px;
@@ -275,7 +278,7 @@
             <table >
             <tr>
                 <td id="image">
-            <img src="{% static "symbol.jpg" %}"  alt="home" width="100px" height="100px"/>
+            <img src="https://github.com/obsoftteam/obe_finalproject/blob/main/WhatsApp%20Image%202023-07-28%20at%209.54.02%20AM.jpeg?raw=true"  alt="home" width="100px" height="100px"/>
             </td>
             <td >
                 <center>
@@ -506,7 +509,7 @@
                 <h2 class="below_heading signs">Signature of the Head of the Department:</h2>
             </div>
             <button class="hidden-print printbut" onClick="window.print()">PDF</button>
-            <button class="hidden-print printbut" onclick="exportHTML()">Word</button>
+            <!-- <button class="hidden-print printbut" onclick="exportHTML()">Word</button> -->
             <div class="empty"></div>
         </div>
     </td>

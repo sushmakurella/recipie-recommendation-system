@@ -103,7 +103,7 @@
 
 <body>
   <div class="box">
-    <form action="lessonplan/viewplan" method="POST" class="login-email">
+    <form action="lessonplan/viewplan"  method="POST" class="login-email" target="_blank">
       {% csrf_token %}
       <div>
         {% for message in messages %}

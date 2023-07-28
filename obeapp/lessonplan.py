@@ -51,7 +51,7 @@ def storeinput(request):
                   knowledge_level="-"
                   #courseoutcome=request.POST["coo"+str(i)]
                   if(request.POST["coo"+str(i)]):
-                       courseoutcome=request.POST["coo"+str(i)]
+                       course_outcome=request.POST["coo"+str(i)]
                
                   if(request.POST["kl"+str(i)]):
                        knowledge_level=request.POST["kl"+str(i)]
@@ -277,7 +277,7 @@ def updateplan(request):
              branch=t.programme
         bat=lessonplanBatch.objects.get(course_code=coursecode)
         result_co=courseoutcomes.objects.filter(course_code=coursecode)
-        result_coNm=[[str(i),'coo'+str(i),'kl'+str(i)] for i in range(len(result_co))]
+        result_coNm=[[str(i+1),'coo'+str(i),'kl'+str(i)] for i in range(len(result_co))]
         result_coF=zip(result_co,result_coNm)
         textbook=textbooks.objects.filter(course_code=coursecode)
         textbook_len=len(textbook)
@@ -375,7 +375,7 @@ def updateinput(request):
 
              #***************** course outcomes **************
              for i in range(0,numco):
-                  co=str(i)
+                  co=str(i+1)
                   course_outcome="-"
                   knowledge_level="-"
                   #courseoutcome=request.POST["coo"+str(i)]

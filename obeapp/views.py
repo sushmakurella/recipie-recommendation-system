@@ -84,7 +84,20 @@ def admin_logout(request):
     logout(request)
     return redirect(user_login)
 
-
+def department_admin_login(request):
+    # if request.user.is_authenticated:
+    #     return redirect(admin_dashboard)
+    if request.method == "POST":
+        uname = request.POST['dname']
+        pswd = request.POST['dpswd']
+        user = authenticate(request, username=uname, password=pswd)
+        if user and user.is_superuser:
+            login(request, user)
+            request.session['user_name'] = uname
+            return redirect(department_dashboard)
+        else:
+            return render(request, 'obeapp/department_login.html', {'error': True})
+    return render(request, 'obeapp/department_login.html')
 
 
 #<=======================================Dashboards funtions =================================>
@@ -101,6 +114,10 @@ def course_view(request):
      return render(request,'obeapp/admin/course_view.html')
 def dept_course_view(request):
      return render(request,'obeapp/department/course_view.html')
+def upload_course_atte(request):
+     return render(request,'obeapp/faculty/upload_course_atte.html')
+def course_attenment(request):
+     return render(request,'obeapp/faculty/course_attenment.html')
 
 
 #<=======================================Admin Activities =================================>
@@ -658,13 +675,33 @@ def mid2_marks_insert(name):
 def sem_marks_insert(regname):
     book_schema = ModelSchema.objects.get(name='v20sem_marks')
     Book = book_schema.as_model()
-    df2 = pd.read_excel(regname)
-    maxmarks = list(df2.iloc[3])
-    df = pd.read_excel(regname, skiprows=[0, 1, 2, 3, 4])
-    df.columns = ['sn', 'rno', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14',
-                  'q15']
+    df2 = pd.read_excel("C:/Users/jagad/Downloads/test.xlsx")
+    df = pd.read_excel("C:/Users/jagad/Downloads/test.xlsx",skiprows=4)
+    df.columns = ['sn', 'a11', 'a12', 'a13', 'b11', 'b12', 'b13', 'a21', 'a22', 'a23', 'b21', 'b22', 'b23', 'a31', 'a32', 'a33',
+                  'b31','b32','b33','a41','a42','a43','b41','b42','b43','a51','a52','a53','b51','b52','b53','total']
     df = df.fillna(-1)
-    df = df.replace('A', -2)
+    df = df.replace('A',-2)
+    #print(df)
+    rdf_columns = ['sn', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14','q15']
+    rdf = pd.DataFrame(columns=rdf_columns)
+    for index,row in df.iterrows():
+        temp=[index]
+        for i in range(1,6):
+            asum,bsum = 0,0
+            for j in range(1,4):
+                asum+=row['a'+str(i)+str(j)] if row['a'+str(i)+str(j)]>=0 else 0
+                bsum+=row['b'+str(i)+str(j)] if row['b'+str(i)+str(j)]>=0 else 0
+            if(asum>bsum):
+                temp.append(row['a'+str(i)+'1'])
+                temp.append(row['a'+str(i)+'2'])
+                temp.append(row['a'+str(i)+'3'])
+            else:
+                temp.append(row['b'+str(i)+'1'])
+                temp.append(row['b'+str(i)+'2'])
+                temp.append(row['b'+str(i)+'3'])
+        rdf.loc[index+1] = temp
+    maxmarks = list(df2.iloc[3])
+    df = rdf
     branch = 'EEE'
     course_code = 'V20EET02'
     academic_year = '2021-22'
@@ -694,7 +731,6 @@ def calculate_mid1_results(regname):
         tp = targetproficiency.objects.get(course_code=df['course_code'][0], co="co" + str(i))
         prflvl = int(tp.tpl)
         for j in ['a', 'b', 'c']:
-
             maxmk = df['co' + str(i) + '_' + str(j) + '_max'][0]
             df1 = df[['co' + str(i) + '_' + str(j)]]
             atn = int(df1[(df1['co' + str(i) + '_' + str(j)] >= 0) & (
@@ -800,6 +836,7 @@ def calculate_sem_results(regname, academicyear, coursecode, branch):
             maxmk = df['co' + str(i) + '_' + str(j) + '_max'][0]
             df1 = df[['co' + str(i) + '_' + str(j)]]
             atn = int(df1[(df1['co' + str(i) + '_' + str(j)] >= 0) & (
+                        
                         df1['co' + str(i) + '_' + str(j)] > maxmk * prflvl)].count(axis=0))
             # print(df1['co'+str(i)+'_'+str(j)],"##",maxmk*prflvl)
             atm = int(df1[df1['co' + str(i) + '_' + str(j)] >= 0].count(axis=0))
@@ -868,4 +905,33 @@ def storeinput(request):
 # mid2_results_table('v20')
 # sem_marks_table('v20')
 # sem_results_table('v20')
+# sem_marks_insert('v20')
 # print(len(Regulation.objects.filter(Regulation='v20')))
+# def change_excel():
+#     df2 = pd.read_excel("C:/Users/jagad/Downloads/test.xlsx")
+#     print(df2.iloc[3])
+#     df = pd.read_excel("C:/Users/jagad/Downloads/test.xlsx",skiprows=3)
+#     df.columns = ['sn', 'a11', 'a12', 'a13', 'b11', 'b12', 'b13', 'a21', 'a22', 'a23', 'b21', 'b22', 'b23', 'a31', 'a32', 'a33',
+#                   'b31','b32','b33','a41','a42','a43','b41','b42','b43','a51','a52','a53','b51','b52','b53','total']
+#     df = df.fillna(-1)
+#     df = df.replace('A',-2)
+#     #print(df)
+#     rdf_columns = ['sn', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14','q15']
+#     rdf = pd.DataFrame(columns=rdf_columns)
+#     for index,row in df.iterrows():
+#         temp=[index]
+#         for i in range(1,6):
+#             asum,bsum = 0,0
+#             for j in range(1,4):
+#                 asum+=row['a'+str(i)+str(j)] if row['a'+str(i)+str(j)]>=0 else 0
+#                 bsum+=row['b'+str(i)+str(j)] if row['b'+str(i)+str(j)]>=0 else 0
+#             if(asum>bsum):
+#                 temp.append(row['a'+str(i)+'1'])
+#                 temp.append(row['a'+str(i)+'2'])
+#                 temp.append(row['a'+str(i)+'3'])
+#             else:
+#                 temp.append(row['b'+str(i)+'1'])
+#                 temp.append(row['b'+str(i)+'2'])
+#                 temp.append(row['b'+str(i)+'3'])
+#         rdf.loc[index+1] = temp
+# change_excel()
